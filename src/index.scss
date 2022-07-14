@@ -92,6 +92,7 @@ header {
   border-radius: 40px;
   border: 1px solid #F3F3F3;
   background: #FFFFFF;
+  
 }
 
 .cardTitle {
@@ -118,7 +119,7 @@ header {
   }
 }
 
-.carBbtn {
+.cardBbtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,13 +130,75 @@ header {
   border: 1px solid #F2F2F2;
 }
 
-.carBbtnLike {
+.cardLikeBtn {
   position: absolute;
   top: 30px;
   left: 30px;
+}
+
+:root {
+  --length: 15px;
+  --duration: 0.4s;
+}
+
+.like-icon {
+  transition: transform var(--duration) ease;
+  z-index: 5;
 
   svg {
-    width: 15px;
-    height: 15px;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: var(--length);
+
+    transition: background-color var(--duration) ease,
+      transform calc(var(--duration) * 1.5) ease,
+      opacity calc(var(--duration) * 1.5) ease;
+
+    path {
+      fill: #e5e5e5;
+    }
+  }
+}
+
+.checkbox {
+  position: absolute;
+  visibility: hidden;
+  z-index: -1;
+
+  &:checked {
+    ~ .like-icon {
+      svg.below {
+        transform: scale(1.6);
+        opacity: 0;
+        path {
+          fill: #ff8585;
+        }
+      }
+      svg.front {
+        path {
+          fill: #ff8585;
+        }
+      }
+    }
+  }
+}
+
+.like {
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  transition: background-color var(--duration) ease;
+  transition: border-color var(--duration) ease;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+
+
+  &:hover {
+    background-color: #fef0f0;
+    border-color: #ff8585;
   }
 }
