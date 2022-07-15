@@ -11,6 +11,52 @@ function App() {
   }
   return (
     <div className="container clear">
+      <div className="drawerOverlay drawerActive">
+        <div className="drawer">
+          <h3>Корзина</h3>
+          <div className="cartWrapper">
+            <div className="cartItem">
+              <div className='cartImg' style={{ backgroundImage: 'url("/img/sneakers/1.jpg")'}}></div>
+              <div className='cartItemMeta'>
+                <h4>Зеленые кроссовки Nike Blazer Mid Suede</h4>
+                <b>12 999руб.</b>
+              </div>
+                <button className="btn-reset cartBtnDelete itemBtn" aria-label="Убрать из корзины">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="#D3D3D3"/>
+                  </svg>
+                </button>
+            </div>
+            <div className="cartItem">
+            <div className='cartImg' style={{ backgroundImage: 'url("/img/sneakers/1.jpg")'}}></div>
+            <div className='cartItemMeta'>
+              <h4>Зеленые кроссовки Nike Blazer Mid Suede</h4>
+              <b>12 999руб.</b>
+            </div>
+              <button className="btn-reset cartBtnDelete itemBtn" aria-label="Убрать из корзины">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="#D3D3D3"/>
+                </svg>
+              </button>
+          </div>
+          </div>
+          <div className="drawerBottom">
+            <ul>
+              <li className= "drawerBottomItem">
+                <span>Итого:</span>
+                <div></div>
+                <b>21 498 руб. </b>
+              </li>
+              <li className= "drawerBottomItem">
+                <span>Налог 5%:</span>
+                <div></div>
+                <b>1074 руб. </b>
+              </li>
+            </ul>
+            <button className="btn-reset drawerBtn">Оформить заказ</button>
+          </div>
+        </div>
+      </div>
       <header className="d-flex justify-between align-center">
         <div className="d-flex align-center">
           <img width={40} height={40} src="img/logo.png" alt="" />
@@ -101,7 +147,7 @@ function App() {
         <div className="sneakers">
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -127,17 +173,17 @@ function App() {
                 <p>Цена:</p>
                 <b>12 999руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                  <img width={11} height={11} src="/img/plus.svg" alt="" aria-hidden="true" />
+                  <img className='btnImage' width={11} height={11} src="/img/plus.svg" alt="" aria-hidden="true" />
                 </button>
             </div>
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -163,7 +209,7 @@ function App() {
               <p>Цена:</p>
               <b>12 999руб.</b>
             </div>
-            <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+            <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
               <svg viewBox="0 0 100 100">
                 <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -173,7 +219,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -199,7 +245,7 @@ function App() {
                 <p>Цена:</p>
                 <b>8 499 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -209,7 +255,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -235,7 +281,7 @@ function App() {
                 <p>Цена:</p>
                 <b>8 999 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -245,7 +291,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -271,7 +317,7 @@ function App() {
                 <p>Цена:</p>
                 <b>15 199 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -281,7 +327,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -307,7 +353,7 @@ function App() {
                 <p>Цена:</p>
                 <b>11 299 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -317,7 +363,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -343,7 +389,7 @@ function App() {
                 <p>Цена:</p>
                 <b>10 799 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -353,7 +399,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -379,7 +425,7 @@ function App() {
                 <p>Цена:</p>
                 <b>16 499 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -389,7 +435,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -415,7 +461,7 @@ function App() {
                 <p>Цена:</p>
                 <b>13 999 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -425,7 +471,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -451,7 +497,7 @@ function App() {
                 <p>Цена:</p>
                 <b>8 499 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -461,7 +507,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -487,7 +533,7 @@ function App() {
                 <p>Цена:</p>
                 <b>8 999 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -497,7 +543,7 @@ function App() {
           </article>
           <article className="card">
             <div className="cardLikeBtn">
-              <label className="like">
+              <label className="like itemBtn">
                 <input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
                 <div className="like-icon">
                   <svg viewBox="0 0 32 32" className="below">
@@ -523,7 +569,7 @@ function App() {
                 <p>Цена:</p>
                 <b>11 299 руб.</b>
               </div>
-                <button className="btn-reset cardBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+                <button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
                   <svg viewBox="0 0 100 100">
                     <path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
