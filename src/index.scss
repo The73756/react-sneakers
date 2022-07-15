@@ -1,3 +1,8 @@
+:root {
+  --length: 15px;
+  --duration: 0.3s;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -27,14 +32,14 @@ header {
   padding: 40px;
   border: 1px solid #eaeaea;
 
-    img {
-      margin-right: 15px;  
-    }
+  img {
+    margin-right: 15px;
+  }
 
-    p {
-      margin: 0;
-      padding: 0;
-    }
+  p {
+    margin: 0;
+    padding: 0;
+  }
 
   .headerRight {
     margin: 0;
@@ -45,6 +50,8 @@ header {
 
     li {
       &:not(:last-child) {
+        display: flex;
+        align-items: center;
         margin-right: 30px;
       }
 
@@ -90,9 +97,9 @@ header {
   grid-column: 2 span;
   padding: 30px;
   border-radius: 40px;
-  border: 1px solid #F3F3F3;
-  background: #FFFFFF;
-  
+  border: 1px solid #f3f3f3;
+  background: #fff;
+
 }
 
 .cardTitle {
@@ -111,7 +118,7 @@ header {
     text-transform: uppercase;
     color: #bdbdbd;
   }
-  
+
   b {
     font-weight: 700;
     font-size: 14px;
@@ -119,26 +126,69 @@ header {
   }
 }
 
-.cardBbtn {
+.cardBtn {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: #FFFFFF;
+  background-color: #fff;
   border: 1px solid #F2F2F2;
+  transition: transform var(--duration) ease,
+    background-color var(--duration) ease,
+    border-color var(--duration) ease;
+
+  img {
+    pointer-events: none;
+    position: absolute;
+    transform: none;
+    opacity: 1;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    transition: transform calc(var(--duration) * 1.5) ease;
+
+    path {
+      opacity: 0;
+      stroke-dasharray: 90 90;
+      stroke-dashoffset: 90;
+      transition: stroke-dashoffset calc(var(--duration) / 3) linear calc(var(--duration) / 3);
+    }
+  }
+
+  &:hover {
+    background-color: #1fc12211;
+    border-color: #18c91b79;
+  }
+}
+
+.cardBtnActive {
+  transition: background-color var(--duration) ease,
+    border-color var(--duration) ease;
+  background-image: none;
+
+  img {
+    animation: hiddenPlus var(--duration) ease;
+    opacity: 0;
+  }
+
+  svg {
+    path {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+  }
 }
 
 .cardLikeBtn {
   position: absolute;
   top: 30px;
   left: 30px;
-}
-
-:root {
-  --length: 15px;
-  --duration: 0.4s;
 }
 
 .like-icon {
@@ -167,14 +217,16 @@ header {
   z-index: -1;
 
   &:checked {
-    ~ .like-icon {
+    ~.like-icon {
       svg.below {
-        transform: scale(1.6);
+        transform: scale(2.0);
         opacity: 0;
+
         path {
           fill: #ff8585;
         }
       }
+
       svg.front {
         path {
           fill: #ff8585;
@@ -189,16 +241,28 @@ header {
   display: block;
   width: 32px;
   height: 32px;
-  transition: background-color var(--duration) ease;
-  transition: border-color var(--duration) ease;
+  transition: background-color var(--duration) ease,
+    border-color var(--duration) ease;
   border-radius: 8px;
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #f2f2f2;
   cursor: pointer;
 
 
   &:hover {
     background-color: #fef0f0;
-    border-color: #ff8585;
+    border-color: #ff858592;
+  }
+}
+
+@keyframes hiddenPlus {
+  0% {
+    transform: rotate(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(180deg);
+    opacity: 0;
   }
 }
