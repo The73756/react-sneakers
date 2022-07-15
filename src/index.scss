@@ -236,10 +236,13 @@ header {
   border-radius: 40px;
   border: 1px solid #f3f3f3;
   background-color: #fff;
-  transition: box-shadow var(--duration) ease;
+  cursor: pointer;
+  transition: box-shadow var(--duration) ease,
+    transform var(--duration) ease;
 
   &:hover {
     box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
   }
 }
 
