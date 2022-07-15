@@ -52,19 +52,126 @@ header {
       &:not(:last-child) {
         display: flex;
         align-items: center;
-        margin-right: 30px;
+        margin-right: 10px;
       }
 
-      span {
-        margin-left: 10px;
-        font-weight: 600;
-        font-size: 14px;
-        color: #5c5c5c;
+    }
+  }
+}
+
+.headerBtn {
+  padding: 10px;
+}
+
+.cartBtn {
+  &:hover {
+    svg {
+      path {
+        transition: stroke var(--duration) ease;
+        stroke: #ffb700;
       }
     }
   }
 }
 
+.favoritesBtn {
+  &:hover {
+    svg {
+      path {
+        transition: fill var(--duration) ease;
+        fill: #ff5a5f;
+      }
+    }
+  }
+}
+
+.userBtn {
+  &:hover {
+    svg {
+      path {
+        transition: fill var(--duration) ease;
+        fill: #18c91b;
+      }
+    }
+  }
+}
+
+.cartPrice {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #5c5c5c;
+}
+
+.hero {
+  margin: 0 auto;
+  position: relative;
+  margin-top: 40px;
+  max-width: 960px;
+  min-height: 300px;
+}
+
+.heroBannerBtn {
+  position: absolute;
+  padding: 14px 56px;
+  bottom: 50px;
+  left: 60px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #a5d364;
+  border-radius: 110px;
+  transition: background-color var(--duration) ease;
+
+  &:hover {
+    background-color: #8ebf4c;
+  }
+}
+
+.swiper-button-prev {
+  width: 35px !important;
+  height: 35px !important;
+  background: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 43px;
+  background-image: url('../public/img/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(180deg);
+  transition: box-shadow var(--duration) ease;
+
+  &::after {
+    content: '' !important;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3) !important;
+  }
+}
+
+.swiper-button-next {
+  width: 35px !important;
+  height: 35px !important;
+  background: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 43px;
+  background-image: url('../public/img/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: box-shadow var(--duration) ease;
+
+
+  &::after {
+    content: '' !important;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3) !important;
+  }
+}
 .content {
   padding: 40px;
 }
@@ -98,8 +205,12 @@ header {
   padding: 30px;
   border-radius: 40px;
   border: 1px solid #f3f3f3;
-  background: #fff;
+  background-color: #fff;
+  transition: box-shadow var(--duration) ease;
 
+  &:hover {
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  }
 }
 
 .cardTitle {
