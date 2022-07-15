@@ -91,8 +91,14 @@ function App() {
         </Swiper>
       </div>
       <main className="content">
-        <h2 className="subtitle">Все кроссовки</h2>
-        <div className="sneaker">
+        <div className='sneakersHead'>
+          <h2 className="subtitle">Все кроссовки</h2>
+          <div className='searchBlock'>
+            <img src="/img/search.svg" alt="Поиск" />
+            <input type="text" placeholder='Поиск...'/>
+          </div>
+        </div>
+        <div className="sneakers">
           <article className="card">
             <div className="cardLikeBtn">
               <label className="like">

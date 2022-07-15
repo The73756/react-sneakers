@@ -9,7 +9,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #e5e5e5;
+}
 
+button, input {
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
@@ -68,7 +71,7 @@ header {
     svg {
       path {
         transition: stroke var(--duration) ease;
-        stroke: #ffb700;
+        stroke: ё#ffb700;
       }
     }
   }
@@ -172,6 +175,7 @@ header {
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3) !important;
   }
 }
+
 .content {
   padding: 40px;
 }
@@ -186,14 +190,40 @@ header {
 }
 
 .subtitle {
-  padding: 0 0 30px 0;
+  padding: 0;
   margin: 0;
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
 }
 
-.sneaker {
+.sneakersHead {
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchBlock {
+  display: flex;
+  align-items: center;
+  padding: 13.5px 0;
+  max-width: 250px;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px; 
+  
+  input {
+    border: none;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  img {
+    padding: 0 18px;
+  }
+}
+
+.sneakers {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 40px;
