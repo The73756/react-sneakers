@@ -307,6 +307,11 @@ header {
   transition: transform var(--duration) ease,
   background-color var(--duration) ease,
   border-color var(--duration) ease;
+
+  svg {
+    transition: transform var(--duration) ease;
+    transform: rotate(0);
+  }
 }
 
 .cardBtn {
@@ -441,10 +446,16 @@ header {
   transform: translateX(100%);
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   transition: transform var(--duration) ease;
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 
   h3 {
     margin: 0;
-    margin-bottom: 30px;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
@@ -526,11 +537,9 @@ header {
 }
 
 .cartWrapper {
-  flex: 1 0 auto;
-}
-
-.drawerBottom {
-  flex: 0 0 auto;
+  flex: 1;
+  margin-bottom: 40px;
+  overflow-y: auto;
 }
 
 .drawerBottomItem {
@@ -560,8 +569,9 @@ header {
   }
 }
 
-.drawerBtn {
+.greenBtn {
   margin-top: 25px;
+  position: relative;
   width: 100%;
   padding: 18px 0;
   font-weight: 600;
@@ -570,17 +580,29 @@ header {
   color: #fff;
   border-radius: 18px;
   background-color: #a5d364;
-  background-image: url("../public/img/full-arrow.svg");
-  background-repeat: no-repeat;
-  background-size: 15px 13px;
-  background-position: center right 30px;
-
-  transition: background-color var(--duration) ease;
 
   &:hover {
     background-color: #8ebf4c;
   }
 }
+
+.drawerBottom {
+  .greenBtn {
+    img {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: transform var(--duration) ease;
+    }
+
+    &:hover {
+      img {
+        transform: translateX(5px);
+      }
+    }
+  }
+}
+
 
 @keyframes hidePlus {
   0% {
