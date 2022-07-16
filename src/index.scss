@@ -422,15 +422,14 @@ header {
 }
 
 .drawerOverlay {
+  display: none;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  visibility: hidden;
+  z-index: 100;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: opacity var(--duration) ease;
 }
 
 .drawer {
@@ -443,8 +442,8 @@ header {
   right: 0;
   top: 0px;
   background-color: #fff;
-  transform: translateX(100%);
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
   transition: transform var(--duration) ease;
 }
 
@@ -463,9 +462,7 @@ header {
 }
 
 .drawerActive.drawerOverlay {
-  z-index: 100;
-  opacity: 1;
-  visibility: visible;
+  display: block;
 
   .drawer {
     transform: translateX(0);
@@ -602,7 +599,6 @@ header {
     }
   }
 }
-
 
 @keyframes hidePlus {
   0% {
