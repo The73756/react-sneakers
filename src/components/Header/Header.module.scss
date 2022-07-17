@@ -1,7 +1,7 @@
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 40px;
   border: 1px solid #eaeaea;
 
@@ -16,8 +16,8 @@
 }
 
 .headerLogo {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .title {
@@ -38,23 +38,24 @@
 
   li {
     &:not(:last-child) {
-      display: flex;
-      align-items: center;
       margin-right: 10px;
     }
 
   }
 }
 
+.headerBtn {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
 .totalPrice {
+  margin-left: 10px;
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
   color: #5c5c5c;
-}
-
-.headerBtn {
-  padding: 10px;
 }
 
 .cartBtn {
@@ -89,4 +90,3 @@
     }
   }
 }
-
