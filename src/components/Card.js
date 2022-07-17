@@ -1,4 +1,4 @@
-function Card() {  
+function Card(props) {  
 	function toggleClass(e) {
     e.preventDefault();
     e.target.classList.toggle('cardBtnActive');
@@ -25,12 +25,12 @@ function Card() {
 					</div>
 				</label>
 			</div>
-			<img width={133} height={112} src="/img/sneakers/1.jpg" alt="Зеленые кроссовки Nike Blazer Mid Suede" />
-			<h3 className="cardTitle">Мужские Кроссовки Nike Blazer Mid Suede</h3>
+			<img width={133} height={112} src={props.imageUrl} alt={props.title} />
+			<h3 className="cardTitle">{props.title}</h3>
 			<div className="d-flex justify-between">
 				<div className="d-flex flex-column cardMeta">
 					<p>Цена:</p>
-					<b>12 999руб.</b>
+					<b>{props.price}руб.</b>
 				</div>
 					<button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
 						<svg viewBox="0 0 100 100">
