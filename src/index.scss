@@ -27,6 +27,8 @@
   font-weight: 700;
 }
 
+// Main styles index page
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -101,26 +103,56 @@ button, input {
   cursor: pointer;
 }
 
-.heroBannerBtn {
-  position: absolute;
-  padding: 14px 56px;
-  bottom: 50px;
-  left: 60px;
-  color: #fff;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  text-transform: uppercase;
-  background-color: #a5d364;
-  border-radius: 110px;
-  transition: background-color var(--duration) ease;
+.itemBtn {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #F2F2F2;
+  cursor: pointer;
+  transition: transform var(--duration) ease,
+  background-color var(--duration) ease,
+  border-color var(--duration) ease;
 
-  &:hover {
-    background-color: #8ebf4c;
+  svg {
+    transition: transform var(--duration) ease;
+    transform: rotate(0);
   }
 }
 
+.greenBtn {
+  margin-top: 25px;
+  position: relative;
+  width: 100%;
+  padding: 18px 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #fff;
+  border-radius: 18px;
+  background-color: #a5d364;
+
+  img {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: transform var(--duration) ease;
+  }
+
+  &:hover {
+    background-color: #8ebf4c;
+    img {
+      transform: translateX(5px);
+    }
+  }
+
+}
+
+// swiper custom btn styles
 .swiper-button-prev {
   width: 35px !important;
   height: 35px !important;
@@ -160,27 +192,6 @@ button, input {
 
   &:hover {
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3) !important;
-  }
-}
-
-.itemBtn {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background-color: #fff;
-  border: 1px solid #F2F2F2;
-  cursor: pointer;
-  transition: transform var(--duration) ease,
-  background-color var(--duration) ease,
-  border-color var(--duration) ease;
-
-  svg {
-    transition: transform var(--duration) ease;
-    transform: rotate(0);
   }
 }
 
@@ -228,35 +239,6 @@ button, input {
       fill: #e5e5e5;
     }
   }
-}
-// like btn end
-
-.greenBtn {
-  margin-top: 25px;
-  position: relative;
-  width: 100%;
-  padding: 18px 0;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
-  color: #fff;
-  border-radius: 18px;
-  background-color: #a5d364;
-
-  img {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    transition: transform var(--duration) ease;
-  }
-
-  &:hover {
-    background-color: #8ebf4c;
-    img {
-      transform: translateX(5px);
-    }
-  }
-
 }
 
 @keyframes hidePlus {

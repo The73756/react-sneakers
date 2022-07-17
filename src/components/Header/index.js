@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 function Header() {  
 	return (
 		<header className={styles.header}>
-			<a className={styles.headerLogo} href="#">
+			<a className={styles.headerLogo} href="#1">
 				<img width={40} height={40} src="img/logo.png" alt="" />
 					<div>
 						<h1 className={styles.title}>React sneakers</h1>

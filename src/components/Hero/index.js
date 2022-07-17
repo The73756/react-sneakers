@@ -17,34 +17,34 @@ function Hero() {
 
 				<SwiperSlide>
 					<div className={styles.heroBanner}>
-						<a href="#">
+						<a href="#1">
 							<img src="/img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
 						</a>
-						<button className='btn-reset heroBannerBtn'>Купить</button>
+						<button className={`btn-reset ${styles.heroBannerBtn}`}>Купить</button>
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className={styles.heroBanner}>
-						<a href="#">
+						<a href="#2">
 							<img src="/img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
 						</a>
-						<button className='btn-reset heroBannerBtn'>Купить</button>
+						<button className={`btn-reset ${styles.heroBannerBtn}`}>Купить</button>
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className={styles.heroBanner}>
-						<a href="#">
+						<a href="#3">
 							<img src="/img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
 						</a>
-						<button className='btn-reset heroBannerBtn'>Купить</button>
+						<button className={`btn-reset ${styles.heroBannerBtn}`}>Купить</button>
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className={styles.heroBanner}>
-						<a href="#">
+						<a href="#4">
 							<img src="/img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
 						</a>
-						<button className='btn-reset heroBannerBtn'>Купить</button>
+						<button className={`btn-reset ${styles.heroBannerBtn}`}>Купить</button>
 					</div>
 				</SwiperSlide>
 			</Swiper>

@@ -1,6 +1,6 @@
 import Card from './components/Card/';
 import Header from './components/Header';
-import Hero from './components/Hero/Hero';
+import Hero from './components/Hero/';
 import Drawer from './components/Drawer';
 
 const arr = [
