@@ -1,0 +1,92 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  padding: 40px;
+  border: 1px solid #eaeaea;
+
+  img {
+    margin-right: 15px;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.headerLogo {
+	display: flex;
+	align-items: center;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.headerRight {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  li {
+    &:not(:last-child) {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+  }
+}
+
+.totalPrice {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #5c5c5c;
+}
+
+.headerBtn {
+  padding: 10px;
+}
+
+.cartBtn {
+  &:hover {
+    svg {
+      path {
+        transition: stroke var(--duration) ease;
+        stroke: #ffb700;
+      }
+    }
+  }
+}
+
+.favoritesBtn {
+  &:hover {
+    svg {
+      path {
+        transition: fill var(--duration) ease;
+        fill: #ff5a5f;
+      }
+    }
+  }
+}
+
+.userBtn {
+  &:hover {
+    svg {
+      path {
+        transition: fill var(--duration) ease;
+        fill: #18c91b;
+      }
+    }
+  }
+}
+
