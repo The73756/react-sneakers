@@ -29,6 +29,10 @@
 
 // Main styles index page
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -39,6 +43,17 @@ body {
 
 button, input {
   font-family: 'Inter', sans-serif;
+}
+
+ul, ol, dl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .container {

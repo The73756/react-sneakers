@@ -20,7 +20,7 @@ const arr = [
 
 function App() {
   return (
-    <div className="container clear">
+    <div className="container">
       <Drawer />
       <Header />
       <Hero />
