@@ -59,10 +59,15 @@
 }
 
 .cartBtn {
+  svg {
+    path {
+      transition: stroke var(--duration) ease;
+    }
+  }
+
   &:hover {
     svg {
       path {
-        transition: stroke var(--duration) ease;
         stroke: #ffb700;
       }
     }
@@ -70,10 +75,15 @@
 }
 
 .favoritesBtn {
+  svg {
+    path {
+      transition: fill var(--duration) ease;
+    }
+  }
+
   &:hover {
     svg {
       path {
-        transition: fill var(--duration) ease;
         fill: #ff5a5f;
       }
     }
@@ -81,10 +91,15 @@
 }
 
 .userBtn {
+  svg {
+    path {
+      transition: fill var(--duration) ease;
+    }
+  }
+
   &:hover {
     svg {
       path {
-        transition: fill var(--duration) ease;
         fill: #18c91b;
       }
     }
