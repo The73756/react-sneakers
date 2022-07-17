@@ -1,11 +1,9 @@
+import styles from "./Card.module.scss";
+
 function Card(props) {  
-	function toggleClass(e) {
-    e.preventDefault();
-    e.target.classList.toggle('cardBtnActive');
-  }
 	return(
-		<article className="card">
-			<div className="cardLikeBtn">
+		<article className={styles.card}>
+			<div className="likeBtn">
 				<label className="like itemBtn">
 					<input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
 					<div className="like-icon">
@@ -26,13 +24,13 @@ function Card(props) {
 				</label>
 			</div>
 			<img width={133} height={112} src={props.imageUrl} alt={props.title} />
-			<h3 className="cardTitle">{props.title}</h3>
-			<div className="d-flex justify-between">
-				<div className="d-flex flex-column cardMeta">
+			<h3 className={styles.cardTitle}>{props.title}</h3>
+			<div className={styles.cardMetaWrapper}>
+				<div className={styles.cardMeta}>
 					<p>Цена:</p>
 					<b>{props.price}руб.</b>
 				</div>
-					<button className="btn-reset cardBtn itemBtn" onClick={toggleClass} aria-label="Добавить в корзину">
+					<button className="btn-reset cardBtn itemBtn" onClick={props.onClick} aria-label="Добавить в корзину">
 						<svg viewBox="0 0 100 100">
 							<path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
 						</svg>
