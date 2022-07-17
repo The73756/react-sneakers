@@ -184,7 +184,6 @@ button, input {
   }
 }
 
-
 // like btn (незнаю как правильно переписать на css modules) - dont touch
 .checkbox {
   position: absolute;
@@ -258,26 +257,6 @@ button, input {
     }
   }
 
-}
-
-.cartBtnDelete {
-  svg {
-    transition: transform var(--duration) ease,
-    fill var(--duration) ease;
-
-    transform: rotate(45deg);
-  }
-
-  &:hover {
-    border-color: #ff000099;
-    background-color: rgba(255, 223, 223, 0.483);
-    svg {
-      transform: rotate(0);
-      path {
-        fill: #ff000099;
-      }
-    }
-  }
 }
 
 @keyframes hidePlus {
