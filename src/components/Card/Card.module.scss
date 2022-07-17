@@ -42,3 +42,49 @@
 		line-height: 17px;
 	}
 }
+
+.likeBtn {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.like {
+  position: relative;
+  display: block;
+
+  &:hover {
+    background-color: #fef0f0;
+    border-color: #ff858592;
+  }
+}
+
+.cardBtn {
+  transition: background-color var(--duration) ease,
+  border-color var(--duration) ease;
+
+  img {
+    pointer-events: none;
+    position: absolute;
+    opacity: 1;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    transition: transform calc(var(--duration) * 1.5) ease;
+
+    path {
+      opacity: 0;
+      stroke-dasharray: 90 90;
+      stroke-dashoffset: 90;
+      transition: stroke-dashoffset calc(var(--duration) / 3) linear calc(var(--duration) / 3);
+    }
+  }
+
+  &:hover {
+    background-color: #1fc12211;
+    border-color: #18c91b79;
+  }
+}

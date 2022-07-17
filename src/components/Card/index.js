@@ -3,8 +3,8 @@ import styles from "./Card.module.scss";
 function Card(props) {  
 	return(
 		<article className={styles.card}>
-			<div className="likeBtn">
-				<label className="like itemBtn">
+			<div className={styles.likeBtn}>
+				<label className={`itemBtn ${styles.like}`}>
 					<input type="checkbox" className="checkbox" aria-label="Добавить в избранные"/>
 					<div className="like-icon">
 						<svg viewBox="0 0 32 32" className="below">
@@ -30,11 +30,11 @@ function Card(props) {
 					<p>Цена:</p>
 					<b>{props.price}руб.</b>
 				</div>
-					<button className="btn-reset cardBtn itemBtn" onClick={props.onClick} aria-label="Добавить в корзину">
+					<button className={`btn-reset itemBtn ${styles.cardBtn}`} onClick={props.onClick} aria-label="Добавить в корзину">
 						<svg viewBox="0 0 100 100">
 							<path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
 						</svg>
-						<img className='btnImage' width={11} height={11} src="/img/plus.svg" alt="" aria-hidden="true" />
+						<img width={11} height={11} src="/img/plus.svg" alt="" aria-hidden="true" />
 					</button>
 			</div>
 		</article>
