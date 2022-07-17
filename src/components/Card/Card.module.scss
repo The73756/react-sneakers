@@ -1,46 +1,46 @@
 .card {
-	position: relative;
-	grid-column: 2 span;
-	padding: 30px;
-	border-radius: 40px;
-	border: 1px solid #f3f3f3;
-	background-color: #fff;
-	transition: box-shadow var(--duration) ease,
-		transform var(--duration) ease;
+  position: relative;
+  grid-column: 2 span;
+  padding: 30px;
+  border-radius: 40px;
+  border: 1px solid #f3f3f3;
+  background-color: #fff;
+  transition: box-shadow var(--duration) ease,
+    transform var(--duration) ease;
 
-	&:hover {
-		box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
-		transform: translateY(-5px);
-	}
+  &:hover {
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+  }
 }
 
 .cardTitle {
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 17px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .cardMetaWrapper {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cardMeta {
-	p {
-		padding: 0;
-		margin: 0;
-		font-weight: 500;
-		font-size: 11px;
-		line-height: 13px;
-		text-transform: uppercase;
-		color: #bdbdbd;
-	}
+  p {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: #bdbdbd;
+  }
 
-	b {
-		font-weight: 700;
-		font-size: 14px;
-		line-height: 17px;
-	}
+  b {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 
 .likeBtn {
@@ -91,7 +91,7 @@
     }
   }
 
-  svg.front  {
+  svg.front {
     path {
       fill: #fc2d2d;
     }
@@ -99,16 +99,7 @@
 }
 
 .cardBtn {
-  transition: background-color var(--duration) ease,
-  border-color var(--duration) ease;
-
-  img {
-    pointer-events: none;
-    position: absolute;
-    opacity: 1;
-  }
-
-  svg {
+  svg.check {
     width: 18px;
     height: 18px;
     pointer-events: none;
@@ -122,6 +113,14 @@
     }
   }
 
+  svg.plus {
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    position: absolute;
+    opacity: 1;
+  }
+
   &:hover {
     background-color: #1fc12211;
     border-color: #18c91b79;
@@ -130,13 +129,13 @@
 
 .cardBtnActive {
   background-image: none;
-  
-  img {
-    animation: hidePlus var(--duration) ease;
+
+  svg.plus {
+    transform: rotate(45deg);
     opacity: 0;
   }
 
-  svg {
+  svg.check {
     path {
       opacity: 1;
       stroke-dashoffset: 0;

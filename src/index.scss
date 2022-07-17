@@ -195,14 +195,3 @@ button, input {
   }
 }
 
-@keyframes hidePlus {
-  0% {
-    transform: rotate(0);
-    opacity: 1;
-  }
-
-  100% {
-    transform: rotate(45deg);
-    opacity: 0;
-  }
-}
