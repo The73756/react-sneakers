@@ -37,6 +37,14 @@ function App() {
           title={obj.name}
           price={obj.price}
           imageUrl={obj.imageUrl}
+          onClickFavorite={(e, activeClass) => {
+            e.preventDefault();
+            e.target.classList.toggle(activeClass);
+          }}
+          onClickPlus={(e, activeClass) => {
+            e.preventDefault();
+            e.target.classList.toggle(activeClass);
+          }}
           />
         ))}
         </div>

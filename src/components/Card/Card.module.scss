@@ -47,15 +47,54 @@
   position: absolute;
   top: 30px;
   left: 30px;
+
+  &:hover {
+    background-color: #fef0f0;
+    border-color: #ff858592;
+  }
 }
 
 .like {
   position: relative;
   display: block;
+}
 
-  &:hover {
-    background-color: #fef0f0;
-    border-color: #ff858592;
+.likeIcon {
+  transition: transform var(--duration) ease;
+  z-index: 5;
+
+  svg {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    pointer-events: none;
+
+    width: var(--length);
+
+    transition: background-color var(--duration) ease,
+      transform calc(var(--duration) * 1.5) ease,
+      opacity calc(var(--duration) * 1.5) ease;
+
+    path {
+      fill: #e5e5e5;
+    }
+  }
+}
+
+.likeBtnActive {
+  svg.below {
+    transform: scale(2.0);
+    opacity: 0;
+
+    path {
+      fill: #fc2d2d;
+    }
+  }
+
+  svg.front  {
+    path {
+      fill: #fc2d2d;
+    }
   }
 }
 
@@ -89,7 +128,7 @@
   }
 }
 
-.active {
+.cardBtnActive {
   background-image: none;
   
   img {
