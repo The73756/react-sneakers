@@ -18,11 +18,6 @@ const arr = [
   {name: 'Мужские Кроссовки Nike Kyrie Flytrap IV', price: 11299, imageUrl: '/img/sneakers/12.jpg'},
 ];
 
-const toggleActiveClass = (e) => {
-  e.preventDefault();
-  e.target.classList.toggle('cardBtnActive');
-}
-
 function App() {
   return (
     <div className="container clear">
@@ -42,7 +37,6 @@ function App() {
           title={obj.name}
           price={obj.price}
           imageUrl={obj.imageUrl}
-          onClick={toggleActiveClass}
           />
         ))}
         </div>

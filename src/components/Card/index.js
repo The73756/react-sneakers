@@ -1,5 +1,10 @@
 import styles from "./Card.module.scss";
 
+const toggleActiveClass = (e) => {
+	e.preventDefault();
+	e.target.classList.toggle(`${styles.active}`);
+}
+
 function Card(props) {  
 	return(
 		<article className={styles.card}>
@@ -30,7 +35,7 @@ function Card(props) {
 					<p>Цена:</p>
 					<b>{props.price}руб.</b>
 				</div>
-					<button className={`btn-reset itemBtn ${styles.cardBtn}`} onClick={props.onClick} aria-label="Добавить в корзину">
+					<button className={`btn-reset itemBtn ${styles.cardBtn}`} onClick={toggleActiveClass} aria-label="Добавить в корзину">
 						<svg viewBox="0 0 100 100">
 							<path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
 						</svg>

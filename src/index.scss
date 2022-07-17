@@ -184,21 +184,6 @@ button, input {
   }
 }
 
-.cardBtnActive {
-  background-image: none;
-  
-  img {
-    animation: hidePlus var(--duration) ease;
-    opacity: 0;
-  }
-
-  svg {
-    path {
-      opacity: 1;
-      stroke-dashoffset: 0;
-    }
-  }
-}
 
 // like btn (незнаю как правильно переписать на css modules) - dont touch
 .checkbox {

@@ -88,3 +88,19 @@
     border-color: #18c91b79;
   }
 }
+
+.active {
+  background-image: none;
+  
+  img {
+    animation: hidePlus var(--duration) ease;
+    opacity: 0;
+  }
+
+  svg {
+    path {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+  }
+}
