@@ -41,10 +41,6 @@ function App() {
             e.preventDefault();
             e.target.classList.toggle(activeClass);
           }}
-          onClickPlus={(e, activeClass) => {
-            e.preventDefault();
-            e.target.classList.toggle(activeClass);
-          }}
           />
         ))}
         </div>
