@@ -7,6 +7,7 @@ import './components/getScrollWidth';
 
   function App() {
     const [items, setItems] = React.useState([]);
+    const [cartItems, setCartItems] = React.useState([]);
     const [cartOpened, setCartOpened] = React.useState(false);
 
     const disableScoll = () => {
@@ -26,9 +27,13 @@ import './components/getScrollWidth';
       });
     }, []);
 
+    const onAddToCart = (productObj) => {
+      setCartItems(prev => [...prev, productObj]);
+    }
+
   return (
     <div className="container">
-      {cartOpened && <Drawer onClose = {() => setCartOpened(false)}/>}
+      {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)}/>}
       <Header
         onClickCart = {() => setCartOpened(true)}
       />
@@ -50,6 +55,7 @@ import './components/getScrollWidth';
             e.preventDefault();
             e.target.classList.toggle(activeClass);
           }}
+          onPlus={onAddToCart}
           />
         ))}
         </div>

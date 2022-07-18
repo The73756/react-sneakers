@@ -1,16 +1,18 @@
 import React from 'react';
 import styles from "./Card.module.scss";
 
-function Card(props) {  
+function Card({ title, price, imageUrl, onFavorite, onPlus}) {
+
 	const [isAdded, setIsAdded] = React.useState(false);
 
 	const onClickPlus = (e) => {
+		onPlus({ title, price, imageUrl });
 		setIsAdded(!isAdded);
 	}
 
 	return(
 		<article className={styles.card}>
-			<button className={`btn-reset itemBtn ${styles.likeBtn}`} onClick={(e) => {props.onClickFavorite(e, styles.likeBtnActive)}} aria-label="Добавить в избранные">
+			<button className={`btn-reset itemBtn ${styles.likeBtn}`} onClick={(e) => {onFavorite(e, styles.likeBtnActive)}} aria-label="Добавить в избранные">
 				<span className={styles.likeIcon}>
 					<svg viewBox="0 0 32 32" className={styles.below}>
 						<path
@@ -27,12 +29,12 @@ function Card(props) {
 					</svg>
 				</span>
 			</button>
-			<img width={133} height={112} src={props.imageUrl} alt={props.title} />
-			<h3 className={styles.cardTitle}>{props.title}</h3>
+			<img width={133} height={112} src={imageUrl} alt={title} />
+			<h3 className={styles.cardTitle}>{title}</h3>
 			<div className={styles.cardMetaWrapper}>
 				<div className={styles.cardMeta}>
 					<p>Цена:</p>
-					<b>{props.price}руб.</b>
+					<b>{price}руб.</b>
 				</div>
 					<button className={`btn-reset itemBtn ${styles.cardBtn} ${isAdded ? styles.cardBtnActive : ''}`} onClick={onClickPlus} aria-label="Добавить в корзину">
 						<svg className={styles.check} viewBox="0 0 100 100">
