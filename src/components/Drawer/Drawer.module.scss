@@ -115,10 +115,12 @@
 
 .cartBtnDelete {
   svg {
-    transition: transform var(--duration) ease,
-    fill var(--duration) ease;
+		path {
+			transition: fill var(--duration) ease;
+		}
 
     transform: rotate(45deg);
+    transition: transform var(--duration) ease;
   }
 
   &:hover {
@@ -131,4 +133,10 @@
       }
     }
   }
+}
+
+.cartClose {
+	svg {
+		pointer-events: none;
+	}
 }
