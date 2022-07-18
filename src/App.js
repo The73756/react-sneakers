@@ -1,7 +1,9 @@
+import React from 'react';
 import Card from './components/Card/';
 import Header from './components/Header';
 import Hero from './components/Hero/';
 import Drawer from './components/Drawer';
+import './components/getScrollWidth';
 
 const arr = [
   {name: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12999, imageUrl: '/img/sneakers/1.jpg'},
@@ -17,12 +19,24 @@ const arr = [
   {name: 'Кроссовки Puma X Aka Boku Future Rider', price: 8499, imageUrl: '/img/sneakers/11.jpg'},
   {name: 'Мужские Кроссовки Nike Kyrie Flytrap IV', price: 11299, imageUrl: '/img/sneakers/12.jpg'},
 ];
+  function App() {
+    const [cartOpened, setCartOpened] = React.useState(false);
 
-function App() {
+    const disableScoll = () => {
+      if (cartOpened) {
+        document.body.classList.add('disable-scroll');
+      } else {
+        document.body.classList.remove('disable-scroll');
+      }
+    };    
+    disableScoll();
+
   return (
     <div className="container">
-      <Drawer />
-      <Header />
+      {cartOpened && <Drawer onClose = {() => setCartOpened(false)}/>}
+      <Header
+        onClickCart = {() => setCartOpened(true)}
+      />
       <Hero />
       <main className="content">
         <div className='sneakersHead'>
