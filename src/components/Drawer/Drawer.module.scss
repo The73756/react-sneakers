@@ -114,25 +114,27 @@
 }
 
 .cartBtnDelete {
-  svg {
+	svg {
 		path {
 			transition: fill var(--duration) ease;
 		}
 
-    transform: rotate(45deg);
-    transition: transform var(--duration) ease;
-  }
+		transform: rotate(45deg);
+		transition: transform var(--duration) ease;
+	}
 
-  &:hover {
-    border-color: #ff000099;
-    background-color: rgba(255, 223, 223, 0.483);
-    svg {
-      transform: rotate(0);
-      path {
-        fill: #ff000099;
-      }
-    }
-  }
+	&:hover {
+		border-color: #ff000099;
+		background-color: rgba(255, 223, 223, 0.483);
+
+		svg {
+			transform: rotate(0);
+
+			path {
+				fill: #ff000099;
+			}
+		}
+	}
 }
 
 .cartClose {
