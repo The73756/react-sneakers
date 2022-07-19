@@ -4,15 +4,21 @@ import styles from "./Card.module.scss";
 function Card({ title, price, imageUrl, onFavorite, onPlus }) {
 
 	const [isAdded, setIsAdded] = React.useState(false);
+	const [isFavorite, setIsFavorite] = React.useState(false);
 
 	const onClickPlus = () => {
 		onPlus({ title, price, imageUrl });
 		setIsAdded(!isAdded);
-	}
+	};
+
+	const onClickFavorite = () => {
+		onFavorite({ title, price, imageUrl });
+		setIsFavorite(!isFavorite);
+	};
 
 	return(
 		<article className={styles.card}>
-			<button className={`btn-reset itemBtn ${styles.likeBtn}`} onClick={(e) => {onFavorite(e, styles.likeBtnActive)}} aria-label="Добавить в избранные">
+			<button className={`btn-reset itemBtn ${styles.likeBtn} ${isFavorite ? styles.likeBtnActive : ''}`} onClick={onClickFavorite} aria-label="Добавить в избранные">
 				<span className={styles.likeIcon}>
 					<svg viewBox="0 0 32 32" className={styles.below}>
 						<path

@@ -19,7 +19,8 @@ function Drawer({ onClose, onRemove, items = [] }) {
 					</button>
 				</div>
 				{
-					items.length > 0 ? <div>
+					items.length > 0 ? 
+					<>
 						<div className={styles.cartWrapper}>
 							{items.map((obj) => (
 								<div className={styles.cartItem} key={obj.id}>
@@ -53,8 +54,9 @@ function Drawer({ onClose, onRemove, items = [] }) {
 								Оформить заказ <img width={16} height={14} src="/img/full-arrow.svg" alt="" aria-hidden="true"/>
 							</button>
 						</div>
-					</div>
-					:	<div className={styles.cartEmpty}>
+					</>
+					:	
+					<div className={styles.cartEmpty}>
 						<img src="/img/empty-cart.png" width={120} height={120} alt="" aria-hidden="true"/>
 						<h3 className={styles.cartEmptyTitle}>Корзина Пуста</h3>
 						<p className={styles.cartEmptyDescr}>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
