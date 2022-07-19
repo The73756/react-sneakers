@@ -35,7 +35,7 @@ import './components/getScrollWidth';
     }
 
     const onRemoveFromCart = (id) => {
-      // axios.delete(`'https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}'`);
+      axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}`);
       setCartItems(prev => prev.filter(item => item.id !== id));
     }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from "./Card.module.scss";
 
-function Card({ title, price, imageUrl, onFavorite, onPlus}) {
+function Card({ title, price, imageUrl, onFavorite, onPlus }) {
 
 	const [isAdded, setIsAdded] = React.useState(false);
 
-	const onClickPlus = (e) => {
+	const onClickPlus = () => {
 		onPlus({ title, price, imageUrl });
 		setIsAdded(!isAdded);
 	}
