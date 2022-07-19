@@ -8,6 +8,7 @@ import './components/getScrollWidth';
   function App() {
     const [items, setItems] = React.useState([]);
     const [cartItems, setCartItems] = React.useState([]);
+    const [searchValue, setSearchValue] = React.useState('');
     const [cartOpened, setCartOpened] = React.useState(false);
 
     const disableScoll = () => {
@@ -31,6 +32,11 @@ import './components/getScrollWidth';
       setCartItems(prev => [...prev, productObj]);
     }
 
+    const onChangeSearchValue = (e) => {
+      console.log(e.target.value);
+      setSearchValue()
+    }
+
   return (
     <div className="container">
       {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)}/>}
@@ -43,7 +49,7 @@ import './components/getScrollWidth';
           <h2 className="subtitle">Все кроссовки</h2>
           <div className='searchBlock'>
             <img src="/img/search.svg" alt="Поиск" />
-            <input type="text" placeholder='Поиск...'/>
+            <input onChange={onChangeSearchValue} type="text" placeholder='Поиск...'/>
           </div>
         </div>
         <div className="sneakers">
