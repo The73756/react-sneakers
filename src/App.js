@@ -46,17 +46,19 @@ import './components/getScrollWidth';
             <input type="text" placeholder='Поиск...'/>
           </div>
         </div>
-        <div className="sneakers">{items.map((obj) => (
-          <Card
-          title={obj.name}
-          price={obj.price}
-          imageUrl={obj.imageUrl}
-          onClickFavorite={(e, activeClass) => {
-            e.preventDefault();
-            e.target.classList.toggle(activeClass);
-          }}
-          onPlus={onAddToCart}
-          />
+        <div className="sneakers">
+          {items.map((obj, index) => (
+            <Card
+              key={index}
+              title={obj.name}
+              price={obj.price}
+              imageUrl={obj.imageUrl}
+              onClickFavorite={(e, activeClass) => {
+                e.preventDefault();
+                e.target.classList.toggle(activeClass);
+              }}
+              onPlus={onAddToCart}
+            />
         ))}
         </div>
       </main>
