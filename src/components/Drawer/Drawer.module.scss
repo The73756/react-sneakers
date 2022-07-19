@@ -36,6 +36,34 @@
 	}
 }
 
+.cartEmpty {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 285px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.cartEmptyTitle {
+	margin: 0;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 27px;
+}
+
+.cartEmptyDescr {
+	margin: 0;
+	margin-bottom: 15px;
+	font-size: 16px;
+	line-height: 24px;
+	opacity: 0.4;
+}
+
 .cartItem {
 	display: flex;
 	align-items: center;

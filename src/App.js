@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Card from './components/Card/';
 import Header from './components/Header';
 import Hero from './components/Hero/';
@@ -21,15 +22,21 @@ import './components/getScrollWidth';
     disableScoll();
 
     React.useEffect(() => {
-      fetch('https://62d5284e5112e98e4859cd67.mockapi.io/items')
-      .then(res => res.json())
-      .then(json => {
-        setItems(json);
-      });
+      axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/items')
+        .then(res => {setItems(res.data)});
+
+      axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart')
+        .then(res => {setCartItems(res.data)});
     }, []);
 
     const onAddToCart = (productObj) => {
+      axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', productObj);
       setCartItems(prev => [...prev, productObj]);
+    }
+
+    const onRemoveFromCart = (id) => {
+      // axios.delete(`'https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}'`);
+      setCartItems(prev => prev.filter(item => item.id !== id));
     }
 
     const onChangeSearchValue = (e) => {
@@ -38,7 +45,7 @@ import './components/getScrollWidth';
 
   return (
     <div className="container">
-      {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)}/>}
+      {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart}/>}
       <Header
         onClickCart = {() => setCartOpened(true)}
       />
@@ -74,3 +81,5 @@ import './components/getScrollWidth';
 }
 
 export default App;
+
+

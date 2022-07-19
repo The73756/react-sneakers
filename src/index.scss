@@ -181,6 +181,20 @@ a {
 
 }
 
+.greenBtnReverse {
+  img {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+  }
+
+  &:hover {
+    img {
+      transform: translateX(-5px) !important;
+    }
+  }
+}
+
 // swiper custom btn styles
 .swiper-button-prev {
   width: 35px !important;
