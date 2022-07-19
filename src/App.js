@@ -33,8 +33,7 @@ import './components/getScrollWidth';
     }
 
     const onChangeSearchValue = (e) => {
-      console.log(e.target.value);
-      setSearchValue()
+      setSearchValue(e.target.value)
     }
 
   return (
@@ -46,26 +45,28 @@ import './components/getScrollWidth';
       <Hero />
       <main className="content">
         <div className='sneakersHead'>
-          <h2 className="subtitle">Все кроссовки</h2>
+          <h2 className="subtitle">{searchValue ? `Поиск по запросу "${searchValue}"` : 'Все кроссовки'}</h2>
           <div className='searchBlock'>
             <img src="/img/search.svg" alt="Поиск" />
-            <input onChange={onChangeSearchValue} type="text" placeholder='Поиск...'/>
+            <input onChange={onChangeSearchValue} value={searchValue} type="text" placeholder='Поиск...'/>
           </div>
         </div>
         <div className="sneakers">
-          {items.map((obj, index) => (
-            <Card
-              key={index}
-              title={obj.name}
-              price={obj.price}
-              imageUrl={obj.imageUrl}
-              onClickFavorite={(e, activeClass) => {
-                e.preventDefault();
-                e.target.classList.toggle(activeClass);
-              }}
-              onPlus={onAddToCart}
-            />
-        ))}
+          {items
+            .filter((obj) => obj.name.toLowerCase().includes(searchValue.toLowerCase()))
+            .map((obj, index) => (
+              <Card
+                key={index}
+                title={obj.name}
+                price={obj.price}
+                imageUrl={obj.imageUrl}
+                onClickFavorite={(e, activeClass) => {
+                  e.preventDefault();
+                  e.target.classList.toggle(activeClass);
+                }}
+                onPlus={onAddToCart}
+              />
+          ))}
         </div>
       </main>
     </div>
