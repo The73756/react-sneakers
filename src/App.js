@@ -41,7 +41,6 @@ import Favorites from './pages/Favorites';
     }
 
     const onAddToCart = async (obj) => {
-      console.log(obj);
       try {
         if (cartItems.find(cartObj => Number(cartObj.id) === Number(obj.id))) {
           onRemoveFromCart(obj.id);
@@ -83,6 +82,7 @@ import Favorites from './pages/Favorites';
           <Route exact path = '/' element={
             <Home
               items={items}
+              cartItems={cartItems}
               searchValue={searchValue}
               setSearchValue={setSearchValue}
               onChangeSearchValue={onChangeSearchValue} 

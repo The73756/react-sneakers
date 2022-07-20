@@ -1,7 +1,7 @@
 import Card from '../components/Card/';
 import Hero from '../components/Hero/';
 
-function Home({ items, searchValue, onChangeSearchValue, onAddToFavorites, onAddToCart }) {
+function Home({ items, searchValue, onChangeSearchValue, onAddToFavorites, onAddToCart, cartItems }) {
 	return (
 
 		<main className="content">
@@ -21,6 +21,7 @@ function Home({ items, searchValue, onChangeSearchValue, onAddToFavorites, onAdd
 							key={index}
 							onFavorite={(obj) => onAddToFavorites(obj)}
 							onPlus={(obj) => onAddToCart(obj)}
+							added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
 							{...item}
 						/>
 				))}
