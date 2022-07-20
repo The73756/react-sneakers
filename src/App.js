@@ -14,6 +14,7 @@ import Favorites from './pages/Favorites';
     const [favorites, setFavorites] = React.useState([]);
     const [searchValue, setSearchValue] = React.useState('');
     const [cartOpened, setCartOpened] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(true);
 
     const disableScoll = () => {
       if (cartOpened) {
@@ -25,14 +26,19 @@ import Favorites from './pages/Favorites';
     disableScoll();
 
     React.useEffect(() => {
-      axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/items')
-        .then(res => {setItems(res.data)});
+      async function fetchData() {  
+        setIsLoading(true);
+        const cartResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart')
+        const favoritesResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/favorites')
+        const itemsResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/items')
+        
+        setIsLoading(false);
 
-      axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart')
-        .then(res => {setCartItems(res.data)});
-
-      axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/favorites')
-        .then(res => {setFavorites(res.data)});
+        setCartItems(cartResponse.data)
+        setFavorites(favoritesResponse.data)
+        setItems(itemsResponse.data)
+      }
+      fetchData()
     }, []);
 
     const onRemoveFromCart = (id) => {
@@ -88,6 +94,7 @@ import Favorites from './pages/Favorites';
               onChangeSearchValue={onChangeSearchValue} 
               onAddToFavorites={onAddToFavorites}
               onAddToCart={onAddToCart}
+              isLoading={isLoading}
             />
           }>
           </Route>    
