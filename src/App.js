@@ -41,8 +41,9 @@ import Favorites from './pages/Favorites';
     }
 
     const onAddToCart = async (obj) => {
+      console.log(obj);
       try {
-        if (cartItems.find(cartObj => cartObj.id === obj.id)) {
+        if (cartItems.find(cartObj => Number(cartObj.id) === Number(obj.id))) {
           onRemoveFromCart(obj.id);
         } else {
           const { data } = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
@@ -56,7 +57,7 @@ import Favorites from './pages/Favorites';
 
     const onAddToFavorites = async (obj) => {
       try {
-        if (favorites.find(favObj => favObj.id === obj.id)) {
+        if (favorites.find(favObj => Number(favObj.id) === Number(obj.id))) {
           axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/favorites/${obj.id}`); 
         } else {
           const { data } = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/favorites', obj);
