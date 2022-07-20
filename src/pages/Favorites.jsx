@@ -1,4 +1,6 @@
-function Favorites() {
+import Card from "../components/Card";
+
+function Favorites({ items, onAddToFavorites }) {
 	return (
 		<main className="content">
 			<div className='sneakersHead'>
@@ -7,7 +9,15 @@ function Favorites() {
 				</div>
 			</div>
 			<div className="sneakers">
-				тут будет код для закладок
+			{items
+				.map((item, index) => (
+					<Card
+						key={index}
+						favorited={true}
+						onFavorite={onAddToFavorites}
+						{...item}
+					/>
+				))}
 			</div>
 		</main>
 	);

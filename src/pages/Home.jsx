@@ -15,15 +15,13 @@ function Home({ items, searchValue, onChangeSearchValue, onAddToFavorites, onAdd
 			</div>
 			<div className="sneakers">
 				{items
-					.filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase()))
+					.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
 					.map((item, index) => (
 						<Card
 							key={index}
-							title={item.name}
-							price={item.price}
-							imageUrl={item.imageUrl}
 							onFavorite={(obj) => onAddToFavorites(obj)}
 							onPlus={(obj) => onAddToCart(obj)}
+							{...item}
 						/>
 				))}
 			</div>

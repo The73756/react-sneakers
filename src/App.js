@@ -30,37 +30,45 @@ import Favorites from './pages/Favorites';
 
       axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart')
         .then(res => {setCartItems(res.data)});
-    }, []);
 
-    const onAddToCart = (obj) => {
-      axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
-      setCartItems(prev => [...prev, obj]);
-    }
+      axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/favorites')
+        .then(res => {setFavorites(res.data)});
+    }, []);
 
     const onRemoveFromCart = (id) => {
       axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}`);
       setCartItems(prev => prev.filter(item => item.id !== id));
     }
 
+    const onAddToCart = (obj) => {
+      if (cartItems.find(cartObj => cartObj.id === obj.id)) {
+        onRemoveFromCart(obj.id);
+      } else {
+        axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
+        setCartItems(prev => [...prev, obj]);
+      }
+    }
+     
+    const onAddToFavorites = async (obj) => {
+      if (favorites.find(favObj => favObj.id === obj.id)) {
+        axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/favorites/${obj.id}`); 
+      } else {
+        const resp = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/favorites', obj);
+        setFavorites(prev => [...prev, obj]);
+      }
+    }
+
     const onChangeSearchValue = (e) => {
       setSearchValue(e.target.value)
     }
-     
-    const onAddToFavorites = (obj) => {
-      axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/favorites', obj);
-      setFavorites(prev => [...prev, obj]);
-    }
+
 
   return (
     <div className="container">
       {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart}/>}
       <Header onClickCart = {() => setCartOpened(true)} />
-      
         <Routes>
-          <Route exact path = '/favorites' element={<Favorites/>}></Route>
-        </Routes>
-
-        <Routes>
+          <Route exact path = '/favorites' element={<Favorites items={favorites} onAddToFavorites={onAddToFavorites} />}></Route>
           <Route exact path = '/' element={
             <Home
               items={items}
@@ -71,7 +79,7 @@ import Favorites from './pages/Favorites';
               onAddToCart={onAddToCart}
             />
           }>
-          </Route>
+          </Route>    
         </Routes>
 
     </div>
