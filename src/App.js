@@ -1,11 +1,12 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
-import Card from './components/Card/';
 import Header from './components/Header';
-import Hero from './components/Hero/';
 import Drawer from './components/Drawer';
 import './components/getScrollWidth';
+
+import Home from './pages/Home';
+import Favorites from './pages/Favorites';
 
   function App() {
     const [items, setItems] = React.useState([]);
@@ -54,33 +55,25 @@ import './components/getScrollWidth';
     <div className="container">
       {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart}/>}
       <Header onClickCart = {() => setCartOpened(true)} />
+      
+        <Routes>
+          <Route exact path = '/favorites' element={<Favorites/>}></Route>
+        </Routes>
 
-        <Route path ="/test"></Route>
+        <Routes>
+          <Route exact path = '/' element={
+            <Home
+              items={items}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              onChangeSearchValue={onChangeSearchValue} 
+              onAddToFavorites={onAddToFavorites}
+              onAddToCart={onAddToCart}
+            />
+          }>
+          </Route>
+        </Routes>
 
-      <Hero />
-      <main className="content">
-        <div className='sneakersHead'>
-          <h2 className="subtitle">{searchValue ? `Поиск по запросу "${searchValue}"` : 'Все кроссовки'}</h2>
-          <div className='searchBlock'>
-            <img src="/img/search.svg" alt="Поиск" />
-            <input onChange={onChangeSearchValue} value={searchValue} type="text" placeholder='Поиск...'/>
-          </div>
-        </div>
-        <div className="sneakers">
-          {items
-            .filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase()))
-            .map((item, index) => (
-              <Card
-                key={index}
-                title={item.name}
-                price={item.price}
-                imageUrl={item.imageUrl}
-                onFavorite={(obj) => onAddToFavorites(obj)}
-                onPlus={(obj) => onAddToCart(obj)}
-              />
-          ))}
-        </div>
-      </main>
     </div>
   );
 }
