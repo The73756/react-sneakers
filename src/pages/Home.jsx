@@ -1,7 +1,8 @@
 import Card from '../components/Card/';
 import Hero from '../components/Hero/';
 
-function Home({ items, searchValue, onChangeSearchValue, onAddToFavorites, onAddToCart, cartItems, isLoading }) {
+function Home({ items, searchValue, onChangeSearchValue, onAddToFavorites, onAddToCart, isLoading }) {
+
 	const renderItems = () =>{
 		const filteredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
 		return (isLoading 
@@ -12,7 +13,6 @@ function Home({ items, searchValue, onChangeSearchValue, onAddToFavorites, onAdd
 					key={index}
 					onFavorite={(obj) => onAddToFavorites(obj)}
 					onPlus={(obj) => onAddToCart(obj)}
-					added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
 					loading={isLoading}
 					{...item}
 				/>

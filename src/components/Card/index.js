@@ -1,19 +1,18 @@
 import React from 'react';
 import ContentLoader from "react-content-loader"
+import { AppContext } from "../../App";
+
 import styles from "./Card.module.scss";
 
-function Card({ title, price, imageUrl, id, onFavorite, onPlus, favorited = false, added = false, loading = false }) {
-	const [isAdded, setIsAdded] = React.useState(added);
-	const [isFavorite, setIsFavorite] = React.useState(favorited);
+function Card({ title, price, imageUrl, id, onFavorite, onPlus, loading = false }) {
+	const { isItemAdded, isItemFavorited } = React.useContext(AppContext);
 
 	const onClickPlus = () => {
 		onPlus({ title, price, imageUrl, id });
-		setIsAdded(!isAdded);
 	};
 
 	const onClickFavorite = () => {
 		onFavorite({ title, price, imageUrl, id });
-		setIsFavorite(!isFavorite);
 	};
 
 	return(
@@ -35,7 +34,7 @@ function Card({ title, price, imageUrl, id, onFavorite, onPlus, favorited = fals
 					</ContentLoader> 
 				: 
 				<>
-					<button className={`btn-reset itemBtn ${styles.likeBtn} ${isFavorite ? styles.likeBtnActive : ''}`} onClick={onClickFavorite} aria-label="Добавить в избранные">
+					<button className={`btn-reset itemBtn ${styles.likeBtn} ${isItemFavorited(id) ? styles.likeBtnActive : ''}`} onClick={onClickFavorite} aria-label="Добавить в избранные">
 						<span className={styles.likeIcon}>
 							<svg viewBox="0 0 32 32" className={styles.below}>
 								<path
@@ -59,7 +58,7 @@ function Card({ title, price, imageUrl, id, onFavorite, onPlus, favorited = fals
 							<p>Цена:</p>
 							<b>{price}руб.</b>
 						</div>
-						<button className={`btn-reset itemBtn ${styles.cardBtn} ${isAdded ? styles.cardBtnActive : ''}`} onClick={onClickPlus} aria-label="Добавить в корзину">
+						<button className={`btn-reset itemBtn ${styles.cardBtn} ${isItemAdded(id) ? styles.cardBtnActive : ''}`} onClick={onClickPlus} aria-label="Добавить в корзину">
 							<svg className={styles.check} viewBox="0 0 100 100">
 								<path d="M20,55 L40,75 L77,27" fill="none" stroke="#18c91b" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round" />
 							</svg>
