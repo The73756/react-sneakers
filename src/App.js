@@ -53,8 +53,8 @@ function App() {
       if (cartItems.find(cartObj => Number(cartObj.id) === Number(obj.id))) {
         onRemoveFromCart(obj.id);
       } else {
-        const { data } = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
-        setCartItems(prev => [...prev, data]);
+        axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
+        setCartItems(prev => [...prev, obj]);
       }
     } catch (error) {
       alert('Не удалось добавить в корзину. Подробности в консоли.');
@@ -89,30 +89,30 @@ function App() {
     return favorites.some((obj) => Number(obj.id) === Number(id));
   }
 
-return (
-  <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded, onAddToFavorites, isItemFavorited }}>
-    <div className="container">
-      {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart}/>}
-      <Header onClickCart = {() => setCartOpened(true)} />
-        <Routes>
-          <Route exact path = '/favorites' element={<Favorites />}></Route>
-          <Route exact path = '/' element={
-            <Home
-              items={items}
-              cartItems={cartItems}
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              onChangeSearchValue={onChangeSearchValue} 
-              onAddToFavorites={onAddToFavorites}
-              onAddToCart={onAddToCart}
-              isLoading={isLoading}
-            />
-          }>
-          </Route>    
-        </Routes>
-    </div>
-  </AppContext.Provider>
-);
+  return (
+    <AppContext.Provider value={{ items, cartItems, favorites, setCartItems, isItemAdded, onAddToFavorites, isItemFavorited }}>
+      <div className="container">
+        {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart}/>}
+        <Header onClickCart = {() => setCartOpened(true)} />
+          <Routes>
+            <Route exact path = '/favorites' element={<Favorites />}></Route>
+            <Route exact path = '/' element={
+              <Home
+                items={items}
+                cartItems={cartItems}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                onChangeSearchValue={onChangeSearchValue} 
+                onAddToFavorites={onAddToFavorites}
+                onAddToCart={onAddToCart}
+                isLoading={isLoading}
+              />
+            }>
+            </Route>    
+          </Routes>
+      </div>
+    </AppContext.Provider>
+  );
 }
 
 export default App;

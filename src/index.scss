@@ -179,6 +179,16 @@ a {
     }
   }
 
+  &:disabled {
+    background-color: #bebebe;
+    cursor: default;
+    &:hover {
+      background-color: #bebebe;
+      img {
+        transform: none;
+      }
+    }
+  }
 }
 
 .greenBtnReverse {
@@ -190,7 +200,7 @@ a {
 
   &:hover {
     img {
-      transform: translateX(-5px) !important;
+      transform: translateX(-5px);
     }
   }
 }
