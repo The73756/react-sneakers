@@ -8,83 +8,86 @@ import './components/getScrollWidth';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 
-  function App() {
-    const [items, setItems] = React.useState([]);
-    const [cartItems, setCartItems] = React.useState([]);
-    const [favorites, setFavorites] = React.useState([]);
-    const [searchValue, setSearchValue] = React.useState('');
-    const [cartOpened, setCartOpened] = React.useState(false);
-    const [isLoading, setIsLoading] = React.useState(true);
+export const AppContext = React.createContext({});
 
-    const disableScoll = () => {
-      if (cartOpened) {
-        document.body.classList.add('disable-scroll');
+function App() {
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [favorites, setFavorites] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState('');
+  const [cartOpened, setCartOpened] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  const disableScoll = () => {
+    if (cartOpened) {
+      document.body.classList.add('disable-scroll');
+    } else {
+      document.body.classList.remove('disable-scroll');
+    }
+  };    
+  disableScoll();
+
+  React.useEffect(() => {
+    async function fetchData() {  
+      setIsLoading(true);
+      const cartResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart')
+      const favoritesResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/favorites')
+      const itemsResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/items')
+      
+      setIsLoading(false);
+
+      setCartItems(cartResponse.data)
+      setFavorites(favoritesResponse.data)
+      setItems(itemsResponse.data)
+    }
+    fetchData()
+  }, []);
+
+  const onRemoveFromCart = (id) => {
+    axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}`);
+    setCartItems(prev => prev.filter(item => item.id !== id));
+  }
+
+  const onAddToCart = async (obj) => {
+    try {
+      if (cartItems.find(cartObj => Number(cartObj.id) === Number(obj.id))) {
+        onRemoveFromCart(obj.id);
       } else {
-        document.body.classList.remove('disable-scroll');
+        const { data } = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
+        setCartItems(prev => [...prev, data]);
       }
-    };    
-    disableScoll();
+    } catch (error) {
+      alert('Не удалось добавить в корзину. Подробности в консоли.');
+      console.log(error);
+    }
+  }
 
-    React.useEffect(() => {
-      async function fetchData() {  
-        setIsLoading(true);
-        const cartResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart')
-        const favoritesResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/favorites')
-        const itemsResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/items')
-        
-        setIsLoading(false);
-
-        setCartItems(cartResponse.data)
-        setFavorites(favoritesResponse.data)
-        setItems(itemsResponse.data)
+  const onAddToFavorites = async (obj) => {
+    try {
+      if (favorites.find(favObj => Number(favObj.id) === Number(obj.id))) {
+        axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/favorites/${obj.id}`); 
+      } else {
+        const { data } = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/favorites', obj);
+        setFavorites(prev => [...prev, data]);
       }
-      fetchData()
-    }, []);
-
-    const onRemoveFromCart = (id) => {
-      axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}`);
-      setCartItems(prev => prev.filter(item => item.id !== id));
+    } catch (error) {
+      alert('Не удалось добавить в избранное. Подробности в консоли.');
+      console.log(error);
     }
+  }
 
-    const onAddToCart = async (obj) => {
-      try {
-        if (cartItems.find(cartObj => Number(cartObj.id) === Number(obj.id))) {
-          onRemoveFromCart(obj.id);
-        } else {
-          const { data } = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
-          setCartItems(prev => [...prev, data]);
-        }
-      } catch (error) {
-        alert('Не удалось добавить в корзину. Подробности в консоли.');
-        console.log(error);
-      }
-    }
-
-    const onAddToFavorites = async (obj) => {
-      try {
-        if (favorites.find(favObj => Number(favObj.id) === Number(obj.id))) {
-          axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/favorites/${obj.id}`); 
-        } else {
-          const { data } = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/favorites', obj);
-          setFavorites(prev => [...prev, data]);
-        }
-      } catch (error) {
-        alert('Не удалось добавить в избранное. Подробности в консоли.');
-        console.log(error);
-      }
-    }
-
-    const onChangeSearchValue = (e) => {
-      setSearchValue(e.target.value)
-    }
+  const onChangeSearchValue = (e) => {
+    setSearchValue(e.target.value)
+  }
 
 
-  return (
+return (
+  <AppContext.Provider value={{ items, cartItems, favorites }}>
     <div className="container">
       {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart}/>}
       <Header onClickCart = {() => setCartOpened(true)} />
         <Routes>
-          <Route exact path = '/favorites' element={<Favorites items={favorites} onAddToFavorites={onAddToFavorites} />}></Route>
+          <Route exact path = '/favorites' element={<Favorites onAddToFavorites={onAddToFavorites} />}></Route>
           <Route exact path = '/' element={
             <Home
               items={items}
@@ -99,9 +102,9 @@ import Favorites from './pages/Favorites';
           }>
           </Route>    
         </Routes>
-
     </div>
-  );
+  </AppContext.Provider>
+);
 }
 
 export default App;
