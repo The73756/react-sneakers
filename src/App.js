@@ -34,36 +34,47 @@ function App() {
   disableScoll();
 
   React.useEffect(() => {
-    ((async () => {
-      setIsLoading(true);
-      const cartResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart')
-      const favoritesResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/favorites')
-      const itemsResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/items')
-      
-      setIsLoading(false);
+    try {
+      ((async () => {
+        const [ cartResponse, favoritesResponse, itemsResponse ] = await Promise.all([
+          axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart'),
+          axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/favorites'),
+          axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/items')
+        ]); 
 
-      setCartItems(cartResponse.data)
-      setFavorites(favoritesResponse.data)
-      setItems(itemsResponse.data)
-    }))();
+        setIsLoading(false);
+        setCartItems(cartResponse.data);
+        setFavorites(favoritesResponse.data);
+        setItems(itemsResponse.data);
+      }))();
+    } catch (error) {
+      alert('Ошибка все капец сайт лег');
+      console.error(error);
+    }
   }, []);
 
   const onRemoveFromCart = (id) => {
-    axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}`);
-    setCartItems(prev => prev.filter(item => Number(item.id) !== Number(id)));
+    try {
+      axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}`);
+      setCartItems(prev => prev.filter(item => Number(item.id) !== Number(id)));
+    } catch (error) {
+      alert('Ошибка при удалении из корзины');
+      console.error(error);
+    }
   };
 
   const onAddToCart = async (obj) => {
     try {
       if (cartItems.find(cartObj => Number(cartObj.id) === Number(obj.id))) {
-        onRemoveFromCart(obj.id);
+        setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)));
+        await axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${obj.id}`);    
       } else {
-        axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
         setCartItems(prev => [...prev, obj]);
+        await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
       }
     } catch (error) {
-      alert('Не удалось добавить в корзину. Подробности в консоли.');
-      console.log(error);
+      alert('Ошибка при добавлении в корзину');
+      console.error(error);
     }
   };
 
@@ -77,13 +88,13 @@ function App() {
         setFavorites(prev => [...prev, data]);
       }
     } catch (error) {
-      alert('Не удалось добавить в избранное. Подробности в консоли.');
-      console.log(error);
+      alert('Не удалось добавить в избранное');
+      console.error(error);
     }
   };
 
   const onChangeSearchValue = (e) => {
-    setSearchValue(e.target.value)
+    setSearchValue(e.target.value);
   };
 
   const isItemAdded = (id) => {

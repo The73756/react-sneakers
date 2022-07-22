@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styles from "./Drawer.module.scss";
 
 const Info = ({ title, img, descr }) => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
 import Info from "./Info";
 import {useCart} from "../../hooks/useCart";
@@ -18,7 +18,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
 		if (target && (target.classList.contains(styles.drawerOverlay) || target.classList.contains(styles.cartClose))) {
 			onClose();
 		}
-	}
+	};
 
 	const onClickOrder = async() => {
 		try {
@@ -38,10 +38,10 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
 
 		} catch (error) {
 			alert('Ошибка при создании заказа :(');
-			console.log(error);
+			console.error(error);
 		}
 		setIsLoading(false);
-	}
+	};
 
 	return (
 		<div className={`${styles.drawerOverlay} ${opened ? styles.drawerActive : ''}`} onClick={closeDrawer}>
