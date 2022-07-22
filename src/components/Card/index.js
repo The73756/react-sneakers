@@ -4,15 +4,16 @@ import { AppContext } from "../../App";
 
 import styles from "./Card.module.scss";
 
-function Card({ title, price, imageUrl, id, onFavorite, onPlus, loading = false }) {
+function Card({ title, price, imageUrl, id, onFavorite, onRemoveFavorite, onPlus, loading = false, isFavoritePage = false }) {
 	const { isItemAdded, isItemFavorited } = React.useContext(AppContext);
+	const obj = { id, parentId: id, title, price, imageUrl };
 
 	const onClickPlus = () => {
-		onPlus({ title, price, imageUrl, id });
+		onPlus(obj);
 	};
 
 	const onClickFavorite = () => {
-		onFavorite({ title, price, imageUrl, id });
+		isFavoritePage ? onRemoveFavorite(id) : onFavorite(obj);
 	};
 
 	return(
@@ -35,7 +36,7 @@ function Card({ title, price, imageUrl, id, onFavorite, onPlus, loading = false 
 				: 
 				<>
 					{ onFavorite && <button 
-						className={`btn-reset itemBtn ${styles.likeBtn} ${isItemFavorited(id) ? styles.likeBtnActive : ''}`} 
+						className={`btn-reset itemBtn ${styles.likeBtn} ${isItemFavorited(id) || isFavoritePage ? styles.likeBtnActive : ''}`} 
 						onClick={onClickFavorite} 
 						aria-label="Добавить в избранные">
 						<span className={styles.likeIcon}>

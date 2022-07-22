@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import {AppContext} from "../App";
 
 function Favorites() {
-	const {favorites, onAddToFavorites} = React.useContext(AppContext);
+	const {favorites, onAddToCart, onRemoveFavorite } = React.useContext(AppContext);
 
 	return (
 		<main className="content">
@@ -15,8 +15,10 @@ function Favorites() {
 				.map((item, index) => (
 					<Card
 						key={index}
-						favorited={true}
-						onFavorite={onAddToFavorites}
+						isFavoritePage={true}
+						onFavorite 	//просто флаг для отображения кнопки добавления в избранные
+						onPlus={(obj) => onAddToCart(obj)}
+						onRemoveFavorite={onRemoveFavorite}
 						{...item}
 					/>
 				))}

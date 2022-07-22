@@ -55,42 +55,59 @@ function App() {
 
   const onRemoveFromCart = (id) => {
     try {
-      axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}`);
       setCartItems(prev => prev.filter(item => Number(item.id) !== Number(id)));
+      axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${id}`);
     } catch (error) {
       alert('Ошибка при удалении из корзины');
       console.error(error);
     }
   };
 
-  const onAddToCart = async (obj) => {
+  const onRemoveFavorite = (id) => {
     try {
-      if (cartItems.find(cartObj => Number(cartObj.id) === Number(obj.id))) {
-        setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)));
-        await axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/cart/${obj.id}`);    
-      } else {
-        setCartItems(prev => [...prev, obj]);
-        await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/cart', obj);
-      }
+      setFavorites(prev => prev.filter(item => Number(item.id) !== Number(id)));
+      axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/favorites/${id}`);
     } catch (error) {
-      alert('Ошибка при добавлении в корзину');
+      alert('Ошибка при удалении из избранных');
       console.error(error);
     }
   };
 
-  const onAddToFavorites = async (obj) => {
+  const onChangeItem = async (obj, state, setter, anchor, errMsg) => {
     try {
-      if (favorites.find(favObj => Number(favObj.id) === Number(obj.id))) {
-        axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/favorites/${obj.id}`); 
-        setFavorites(prev => prev.filter(item => Number(item.id) !== Number(obj.id)));
+      const findItem = state.find((item) => Number(item.parentId) === Number(obj.id));
+      if (findItem) {
+        setter((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id)));
+        await axios.delete(`https://62d5284e5112e98e4859cd67.mockapi.io/${anchor}/${findItem.id}`);
       } else {
-        const { data } = await axios.post('https://62d5284e5112e98e4859cd67.mockapi.io/favorites', obj);
-        setFavorites(prev => [...prev, data]);
+        setter((prev) => [...prev, obj]);
+        const {
+          data
+        } = await axios.post(`https://62d5284e5112e98e4859cd67.mockapi.io/${anchor}`, obj);
+        setter((prev) =>
+          prev.map((item) => {
+            if (item.parentId === data.parentId) {
+              return {
+                ...item,
+                id: data.id,
+              };
+            }
+            return item;
+          }),
+        );
       }
     } catch (error) {
-      alert('Не удалось добавить в избранное');
+      alert(errMsg);
       console.error(error);
     }
+  };
+
+  const onAddToCart = (obj) => {
+    onChangeItem(obj, cartItems, setCartItems, 'cart', 'Ошибка при добавлении в корзину');
+  };
+
+  const onAddToFavorites = (obj) => {
+    onChangeItem(obj, favorites, setFavorites, 'favorites', 'Ошибка при добавлении в избранное');
   };
 
   const onChangeSearchValue = (e) => {
@@ -98,15 +115,27 @@ function App() {
   };
 
   const isItemAdded = (id) => {
-    return cartItems.some((obj) => Number(obj.id) === Number(id));
+    return cartItems.some((obj) => Number(obj.parentId) === Number(id));
   };
 
   const isItemFavorited = (id) => {
-    return favorites.some((obj) => Number(obj.id) === Number(id));
+    return favorites.some((obj) => Number(obj.parentId) === Number(id));
   }
 
   return (
-    <AppContext.Provider value={{ items, cartItems, favorites, setCartItems, isItemAdded, onAddToFavorites, isItemFavorited, onAddToCart }}>
+    <AppContext.Provider value = {
+      {
+        items,
+        cartItems,
+        favorites,
+        setCartItems,
+        isItemAdded,
+        onAddToFavorites,
+        onRemoveFavorite,
+        isItemFavorited,
+        onAddToCart
+      }
+    }>
       <div className="container">
         <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart} opened={cartOpened}/>
         <Header onClickCart = {() => setCartOpened(true)} />
