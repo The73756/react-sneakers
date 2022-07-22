@@ -20,10 +20,15 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const disableScoll = () => {
+    const cssDuration = getComputedStyle(document.querySelector(':root')).getPropertyValue('--duration').slice(0, -1); //ms
+    const dur = cssDuration * 1000; //second
+
     if (cartOpened) {
       document.body.classList.add('disable-scroll');
     } else {
-      document.body.classList.remove('disable-scroll');
+      setTimeout(() => {
+        document.body.classList.remove('disable-scroll');
+      }, dur);
     }
   };    
   disableScoll();
@@ -92,7 +97,7 @@ function App() {
   return (
     <AppContext.Provider value={{ items, cartItems, favorites, setCartItems, isItemAdded, onAddToFavorites, isItemFavorited, onAddToCart }}>
       <div className="container">
-        {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart}/>}
+        <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart} opened={cartOpened}/>
         <Header onClickCart = {() => setCartOpened(true)} />
           <Routes>
             <Route exact path = '/favorites' element={<Favorites />}></Route>
