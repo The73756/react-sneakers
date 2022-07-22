@@ -1,30 +1,30 @@
 :root {
   --length: 15px;
   --duration: 0.3s;
-  --scroll-width: 0px;
+  --scroll-width: 0;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('../public/fonts/Inter-Regular.woff2');
+  src: url("../public/fonts/Inter-Regular.woff2");
+  font-family: "Inter";
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('../public/fonts/Inter-Medium.woff2');
+  src: url("../public/fonts/Inter-Medium.woff2");
+  font-family: "Inter";
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('../public/fonts/Inter-SemiBold.woff2');
+  src: url("../public/fonts/Inter-SemiBold.woff2");
+  font-family: "Inter";
   font-weight: 600;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('../public/fonts/Inter-Bold.woff2');
+  src: url("../public/fonts/Inter-Bold.woff2");
+  font-family: "Inter";
   font-weight: 700;
 }
 
@@ -36,20 +36,23 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #e7f6ff;
 }
 
-button, input {
-  font-family: 'Inter', sans-serif;
+button,
+input {
+  font-family: "Inter", sans-serif;
 }
 
-ul, ol, dl {
+ul,
+ol,
+dl {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 a {
@@ -63,12 +66,12 @@ a {
 }
 
 .container {
-  background: #fff;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
-  border-radius: 20px;
-  max-width: 1080px;
   margin: 0 auto;
   margin-top: 50px;
+  border-radius: 20px;
+  max-width: 1080px;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 4%);
+  background: #fff;
 }
 
 .content {
@@ -76,10 +79,10 @@ a {
 }
 
 .subtitle {
-  padding: 0;
-  margin: 0;
-  max-width: 650px;
   overflow: auto;
+  margin: 0;
+  padding: 0;
+  max-width: 650px;
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
@@ -87,26 +90,27 @@ a {
 
 .sneakersHead {
   display: flex;
-  margin-bottom: 30px;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 .searchBlock {
   display: flex;
   align-items: center;
-  max-width: 250px;
   border: 1px solid #f3f3f3;
-  border-radius: 10px; 
-  
+  border-radius: 10px;
+  max-width: 250px;
+
   input {
     border: none;
     padding: 13.5px 0;
-    font-size: 16px;
     width: 100%;
+    font-size: 16px;
 
     &:focus {
       outline: none;
+
       &::placeholder {
         opacity: 0.8;
       }
@@ -134,47 +138,49 @@ a {
 }
 
 .itemBtn {
-  display: flex;
   position: relative;
-  justify-content: center;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
   width: 32px;
   height: 32px;
-  border-radius: 8px;
   background-color: #fff;
-  border: 1px solid #F2F2F2;
+  transition:
+    transform var(--duration) ease,
+    background-color var(--duration) ease,
+    border-color var(--duration) ease;
   cursor: pointer;
-  transition: transform var(--duration) ease,
-  background-color var(--duration) ease,
-  border-color var(--duration) ease;
 
   svg {
-    transition: transform var(--duration) ease;
     transform: rotate(0);
+    transition: transform var(--duration) ease;
   }
 }
 
 .greenBtn {
-  margin-top: 25px;
   position: relative;
-  width: 100%;
+  margin-top: 25px;
+  border-radius: 18px;
   padding: 18px 0;
+  width: 100%;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
   color: #fff;
-  border-radius: 18px;
   background-color: #a5d364;
 
   img {
     position: absolute;
-    top: 20px;
     right: 30px;
+    top: 20px;
     transition: transform var(--duration) ease;
   }
 
   &:hover {
     background-color: #8ebf4c;
+
     img {
       transform: translateX(5px);
     }
@@ -184,8 +190,10 @@ a {
     background-color: #bebebe;
     animation: button-loading 0.8s ease-in-out infinite;
     cursor: default;
+
     &:hover {
       background-color: #bebebe;
+
       img {
         transform: none;
       }
@@ -196,8 +204,8 @@ a {
 .greenBtnReverse {
   img {
     position: absolute;
-    top: 20px;
     left: 30px;
+    top: 20px;
   }
 
   &:hover {
@@ -209,44 +217,43 @@ a {
 
 // swiper custom btn styles
 .swiper-button-prev {
+  border-radius: 43px;
   width: 35px !important;
   height: 35px !important;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 4%);
   background: #fff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
-  border-radius: 43px;
-  background-image: url('../public/img/arrow.svg');
-  background-repeat: no-repeat;
+  background-image: url("../public/img/arrow.svg");
   background-position: center;
+  background-repeat: no-repeat;
   transform: rotate(180deg);
   transition: box-shadow var(--duration) ease;
 
   &::after {
-    content: '' !important;
+    content: "" !important;
   }
 
   &:hover {
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 0 30px rgb(0 0 0 / 30%) !important;
   }
 }
 
 .swiper-button-next {
+  border-radius: 43px;
   width: 35px !important;
   height: 35px !important;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 4%);
   background: #fff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
-  border-radius: 43px;
-  background-image: url('../public/img/arrow.svg');
-  background-repeat: no-repeat;
+  background-image: url("../public/img/arrow.svg");
   background-position: center;
+  background-repeat: no-repeat;
   transition: box-shadow var(--duration) ease;
 
-
   &::after {
-    content: '' !important;
+    content: "" !important;
   }
 
   &:hover {
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 0 30px rgb(0 0 0 / 30%) !important;
   }
 }
 
@@ -254,9 +261,11 @@ a {
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
   }
+
   100% {
     opacity: 1;
   }

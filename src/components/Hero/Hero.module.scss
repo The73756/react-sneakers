@@ -1,28 +1,27 @@
 .hero {
-  margin: 0 auto;
   position: relative;
+  margin: 0 auto;
   margin-bottom: 40px;
-  max-width: 960px;
   min-height: 300px;
+  max-width: 960px;
 }
 
 .heroBannerBtn {
   position: absolute;
-  padding: 14px 56px;
-  bottom: 50px;
   left: 60px;
-  color: #fff;
+  bottom: 50px;
+  border-radius: 110px;
+  padding: 14px 56px;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
   text-align: center;
   text-transform: uppercase;
+  color: #fff;
   background-color: #a5d364;
-  border-radius: 110px;
   transition: background-color var(--duration) ease;
 
   &:hover {
     background-color: #8ebf4c;
   }
 }
-

@@ -1,9 +1,9 @@
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  justify-content: space-between;
   border: 1px solid #eaeaea;
+  padding: 40px;
 
   img {
     margin-right: 15px;
@@ -30,17 +30,16 @@
 }
 
 .headerRight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
   li {
     &:not(:last-child) {
       margin-right: 10px;
     }
-
   }
 }
 

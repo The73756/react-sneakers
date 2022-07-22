@@ -1,15 +1,16 @@
 .card {
   position: relative;
   grid-column: 2 span;
-  padding: 30px;
-  border-radius: 40px;
   border: 1px solid #f3f3f3;
+  border-radius: 40px;
+  padding: 30px;
   background-color: #fff;
-  transition: box-shadow var(--duration) ease,
+  transition:
+    box-shadow var(--duration) ease,
     transform var(--duration) ease;
 
   &:hover {
-    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 14px 30px rgb(0 0 0 / 5%);
     transform: translateY(-5px);
   }
 }
@@ -27,8 +28,8 @@
 
 .cardMeta {
   p {
-    padding: 0;
     margin: 0;
+    padding: 0;
     font-weight: 500;
     font-size: 11px;
     line-height: 13px;
@@ -45,12 +46,12 @@
 
 .likeBtn {
   position: absolute;
-  top: 30px;
   left: 30px;
+  top: 30px;
 
   &:hover {
-    background-color: #fef0f0;
     border-color: #ff858592;
+    background-color: #fef0f0;
   }
 }
 
@@ -60,20 +61,19 @@
 }
 
 .likeIcon {
-  transition: transform var(--duration) ease;
   z-index: 5;
+  transition: transform var(--duration) ease;
 
   svg {
     position: absolute;
-    top: 25%;
     left: 25%;
-    pointer-events: none;
-
+    top: 25%;
     width: var(--length);
-
-    transition: background-color var(--duration) ease,
+    transition:
+      background-color var(--duration) ease,
       transform calc(var(--duration) * 1.5) ease,
       opacity calc(var(--duration) * 1.5) ease;
+    pointer-events: none;
 
     path {
       fill: #e5e5e5;
@@ -83,8 +83,8 @@
 
 .likeBtnActive {
   svg.below {
-    transform: scale(2.0);
     opacity: 0;
+    transform: scale(2);
 
     path {
       fill: #fc2d2d;
@@ -102,28 +102,28 @@
   svg.check {
     width: 18px;
     height: 18px;
-    pointer-events: none;
     transition: transform calc(var(--duration) * 1.5) ease;
+    pointer-events: none;
 
     path {
-      opacity: 0;
       stroke-dasharray: 90 90;
       stroke-dashoffset: 90;
+      opacity: 0;
       transition: stroke-dashoffset calc(var(--duration) / 3) linear calc(var(--duration) / 3);
     }
   }
 
   svg.plus {
+    position: absolute;
     width: 12px;
     height: 12px;
-    pointer-events: none;
-    position: absolute;
     opacity: 1;
+    pointer-events: none;
   }
 
   &:hover {
-    background-color: #1fc12211;
     border-color: #18c91b79;
+    background-color: #1fc12211;
   }
 }
 
@@ -131,14 +131,14 @@
   background-image: none;
 
   svg.plus {
-    transform: rotate(45deg);
     opacity: 0;
+    transform: rotate(45deg);
   }
 
   svg.check {
     path {
-      opacity: 1;
       stroke-dashoffset: 0;
+      opacity: 1;
     }
   }
 }

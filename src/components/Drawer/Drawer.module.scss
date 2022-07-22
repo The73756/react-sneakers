@@ -1,192 +1,193 @@
 .drawerOverlay {
-	position: absolute;
-	visibility: hidden;
-	overflow: hidden;
-	opacity: 0;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 100;
-	background-color: rgba(0, 0, 0, 0.5);
-	transition: opacity var(--duration) ease,	
-		visibility var(--duration) ease,
-		transform var(--duration) ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 50%);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--duration) ease,
+    visibility var(--duration) ease,
+    transform var(--duration) ease;
 }
 
 .drawerActive {
-	visibility: visible;
-	opacity: 1;
+  opacity: 1;
+  visibility: visible;
 
-	.drawer {
-		transform: translateX(0);
-	}
+  .drawer {
+    transform: translateX(0);
+  }
 }
 
 .drawer {
-	display: flex;
-	flex-direction: column;
-	padding: 30px;
-	position: absolute;
-	width: 385px;
-	height: 100%;
-	right: 0;
-	top: 0px;
-	background-color: #fff;
-	box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-	transform: translate(100%);
-	transition: transform var(--duration) ease;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 385px;
+  height: 100%;
+  box-shadow: -10px 4px 24px rgb(0 0 0 / 10%);
+  background-color: #fff;
+  transform: translate(100%);
+  transition: transform var(--duration) ease;
 }
 
 .drawerHeader {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
 
-	h3 {
-		margin: 0;
-		font-weight: 700;
-		font-size: 24px;
-		line-height: 29px;
-	}
+  h3 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+  }
 }
 
 .cartEmpty {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	max-width: 285px;
-	margin: 0 auto;
-	text-align: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 285px;
+  text-align: center;
 }
 
 .cartEmptyTitle {
-	margin: 0;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	font-weight: 600;
-	font-size: 22px;
-	line-height: 27px;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
 }
 
 .cartEmptyDescr {
-	margin: 0;
-	margin-bottom: 15px;
-	font-size: 16px;
-	line-height: 24px;
-	opacity: 0.4;
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 24px;
+  opacity: 0.4;
 }
 
 .cartItem {
-	display: flex;
-	align-items: center;
-	padding: 20px;
-	border: 1px solid #f3f3f3;
-	border-radius: 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #f3f3f3;
+  border-radius: 20px;
+  padding: 20px;
 
-	img {
-		margin-right: 20px;
-	}
+  img {
+    margin-right: 20px;
+  }
 
-	&:not(:last-child) {
-		margin-bottom: 20px;
-	}
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 .cartImg {
-	margin-right: 21px;
-	height: 70px;
-	width: 70px;
-	background-size: contain;
-	background-position: 0 0;
-	background-repeat: no-repeat;
+  margin-right: 21px;
+  width: 70px;
+  height: 70px;
+  background-position: 0 0;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .cartItemMeta {
-	margin-right: 12px;
-	max-width: 150px;
+  margin-right: 12px;
+  max-width: 150px;
 
-	h4 {
-		margin: 0;
-		margin-bottom: 8px;
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 17px;
-	}
+  h4 {
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
 
-	b {
-		font-weight: 700;
-		font-size: 14px;
-		line-height: 17px;
-	}
+  b {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 
 .cartWrapper {
-	flex: 1;
-	margin-bottom: 40px;
-	overflow-y: auto;
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 40px;
 }
 
 .drawerBottom {
-	flex: 0 1;
+  flex: 0 1;
 }
 
 .drawerBottomItem {
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 
-	span {
-		font-size: 16px;
-	}
+  span {
+    font-size: 16px;
+  }
 
-	div {
-		margin: 0 7px;
-		flex: 1;
-		position: relative;
-		bottom: 4px;
-		border-bottom: 1px dashed #dfdfdf;
-	}
+  div {
+    position: relative;
+    bottom: 4px;
+    flex: 1;
+    margin: 0 7px;
+    border-bottom: 1px dashed #dfdfdf;
+  }
 
-	b {
-		font-weight: 600;
-		font-size: 16px;
-	}
+  b {
+    font-weight: 600;
+    font-size: 16px;
+  }
 
-	&:not(:last-child) {
-		margin-bottom: 20px;
-	}
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 .cartBtnDelete {
-	svg {
-		path {
-			transition: fill var(--duration) ease;
-		}
+  svg {
+    transform: rotate(45deg);
+    transition: transform var(--duration) ease;
 
-		transform: rotate(45deg);
-		transition: transform var(--duration) ease;
-	}
+    path {
+      transition: fill var(--duration) ease;
+    }
+  }
 
-	&:hover {
-		border-color: #ff000099;
-		background-color: rgba(255, 223, 223, 0.483);
+  &:hover {
+    border-color: #f009;
+    background-color: rgb(255 223 223 / 48.3%);
 
-		svg {
-			transform: rotate(0);
+    svg {
+      transform: rotate(0);
 
-			path {
-				fill: #ff000099;
-			}
-		}
-	}
+      path {
+        fill: #f009;
+      }
+    }
+  }
 }
 
 .cartClose {
-	svg {
-		pointer-events: none;
-	}
+  svg {
+    pointer-events: none;
+  }
 }
