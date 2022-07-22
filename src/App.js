@@ -7,6 +7,7 @@ import './components/getScrollWidth';
 
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
+import Orders from './pages/Orders';
 
 export const AppContext = React.createContext({});
 
@@ -28,7 +29,7 @@ function App() {
   disableScoll();
 
   React.useEffect(() => {
-    async function fetchData() {  
+    ((async () => {
       setIsLoading(true);
       const cartResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/cart')
       const favoritesResponse = await axios.get('https://62d5284e5112e98e4859cd67.mockapi.io/favorites')
@@ -39,8 +40,7 @@ function App() {
       setCartItems(cartResponse.data)
       setFavorites(favoritesResponse.data)
       setItems(itemsResponse.data)
-    }
-    fetchData()
+    }))();
   }, []);
 
   const onRemoveFromCart = (id) => {
@@ -90,12 +90,13 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{ items, cartItems, favorites, setCartItems, isItemAdded, onAddToFavorites, isItemFavorited }}>
+    <AppContext.Provider value={{ items, cartItems, favorites, setCartItems, isItemAdded, onAddToFavorites, isItemFavorited, onAddToCart }}>
       <div className="container">
         {cartOpened && <Drawer items={cartItems} onClose = {() => setCartOpened(false)} onRemove={onRemoveFromCart}/>}
         <Header onClickCart = {() => setCartOpened(true)} />
           <Routes>
             <Route exact path = '/favorites' element={<Favorites />}></Route>
+            <Route exact path = '/orders' element={<Orders />}></Route>
             <Route exact path = '/' element={
               <Home
                 items={items}

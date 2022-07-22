@@ -9,8 +9,6 @@ function Favorites() {
 		<main className="content">
 			<div className='sneakersHead'>
 				<h2 className="subtitle">Мои закладки</h2>
-				<div className='searchBlock'>
-				</div>
 			</div>
 			<div className="sneakers">
 			{favorites
