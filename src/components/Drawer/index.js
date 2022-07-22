@@ -12,6 +12,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
 	const [ orderId, setOrderId ] = React.useState(null);
 	const [isOrderComplete, setIsOrderComplete] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(false);
+	const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0)
 
 	const closeDrawer = (e) => {
 		const target = e.target;
@@ -78,12 +79,12 @@ function Drawer({ onClose, onRemove, items = [] }) {
 								<li className={styles.drawerBottomItem}>
 									<span>Итого:</span>
 									<div></div>
-									<b>21 498 руб. </b>
+									<b>{totalPrice} руб.</b>
 								</li>
 								<li className={styles.drawerBottomItem}>
 									<span>Налог 5%:</span>
 									<div></div>
-									<b>1074 руб. </b>
+									<b>{Math.round(totalPrice * 0.05)} руб.</b>
 								</li>
 							</ul>
 							<button disabled={isLoading} onClick={onClickOrder} className="btn-reset greenBtn">
