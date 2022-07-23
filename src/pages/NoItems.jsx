@@ -10,7 +10,7 @@ export const NoItems = ({ title, img, descr }) => {
 			<Link to="/">
 				<div className="greenBtn greenBtnReverse">
 					Вернуться назад
-					<img width={16} height={14} src="/img/full-arrow-left.svg" alt="" aria-hidden="true"/>
+					<img width={16} height={14} src="img/full-arrow-left.svg" alt="" aria-hidden="true"/>
 				</div>
 			</Link>
 		</div>

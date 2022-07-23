@@ -32,7 +32,7 @@ function Favorites() {
 			:
 				<NoItems 
 					title={'Закладок нет :('}
-					img={'/img/no-favorites.png'}
+					img={'img/no-favorites.png'}
 					descr={'Вы ничего не добавляли в закладки'}
 				/> 
 			}

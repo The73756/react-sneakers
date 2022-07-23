@@ -9,7 +9,7 @@ const Info = ({ title, img, descr }) => {
 			<p className={styles.cartEmptyDescr}>{descr}</p>
 			<button className={`btn-reset greenBtn greenBtnReverse ${styles.cartClose}`}>
 				Вернуться назад
-				<img width={16} height={14} src="/img/full-arrow-left.svg" alt="" aria-hidden="true"/>
+				<img width={16} height={14} src="img/full-arrow-left.svg" alt="" aria-hidden="true"/>
 			</button>
 		</div>
 	)

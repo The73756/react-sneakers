@@ -43,7 +43,7 @@ function Orders() {
 			:
 				<NoItems 
 					title={'Заказов нет :('}
-					img={'/img/no-orders.png'}
+					img={'img/no-orders.png'}
 					descr={'Вы ничего еще не заказывали ранее'}
 				/> 
 			}
