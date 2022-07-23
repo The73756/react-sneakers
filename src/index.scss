@@ -76,6 +76,10 @@ a {
   max-width: 1080px;
   box-shadow: 0 10px 20px rgb(0 0 0 / 4%);
   background: #fff;
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+  }
 }
 
 .content {

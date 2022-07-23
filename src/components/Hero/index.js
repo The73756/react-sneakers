@@ -18,7 +18,10 @@ function Hero() {
 				<SwiperSlide>
 					<div className={styles.heroBanner}>
 						<a href="#1">
-							<img src="img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
+							<picture>
+								<source media="(max-width: 768px)" srcSet="img/main-banner-small.jpg" />
+								<img src="img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
+							</picture>
 						</a>
 						<button className={`btn-reset ${styles.heroBannerBtn}`}>Купить</button>
 					</div>
@@ -26,7 +29,10 @@ function Hero() {
 				<SwiperSlide>
 					<div className={styles.heroBanner}>
 						<a href="#2">
-							<img src="img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
+						<picture>
+								<source media="(max-width: 768px)" srcSet="img/main-banner-small.jpg" />
+								<img src="img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
+							</picture>
 						</a>
 						<button className={`btn-reset ${styles.heroBannerBtn}`}>Купить</button>
 					</div>
@@ -34,7 +40,10 @@ function Hero() {
 				<SwiperSlide>
 					<div className={styles.heroBanner}>
 						<a href="#3">
-							<img src="img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
+						<picture>
+								<source media="(max-width: 768px)" srcSet="img/main-banner-small.jpg" />
+								<img src="img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
+							</picture>
 						</a>
 						<button className={`btn-reset ${styles.heroBannerBtn}`}>Купить</button>
 					</div>
@@ -42,7 +51,10 @@ function Hero() {
 				<SwiperSlide>
 					<div className={styles.heroBanner}>
 						<a href="#4">
-							<img src="img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
+						<picture>
+								<source media="(max-width: 768px)" srcSet="img/main-banner-small.jpg" />
+								<img src="img/main-banner.jpg" alt="Реклама кроссовок KERMIT"/>
+							</picture>
 						</a>
 						<button className={`btn-reset ${styles.heroBannerBtn}`}>Купить</button>
 					</div>
