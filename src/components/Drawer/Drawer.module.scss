@@ -37,6 +37,10 @@
   background-color: #fff;
   transform: translate(100%);
   transition: transform var(--duration) ease;
+
+  @media (max-width: 576px) {
+    width: 300px;
+  }
 }
 
 .drawerHeader {
@@ -88,12 +92,20 @@
   border-radius: 20px;
   padding: 20px;
 
-  img {
-    margin-right: 20px;
-  }
-
   &:not(:last-child) {
     margin-bottom: 20px;
+  }
+
+  @media (max-width: 576px) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .cartBtnDelete {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+    }
   }
 }
 
@@ -104,6 +116,10 @@
   background-position: 0 0;
   background-size: contain;
   background-repeat: no-repeat;
+
+  @media (max-width: 576px) {
+    margin: 0 auto;
+  }
 }
 
 .cartItemMeta {
@@ -122,6 +138,11 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 17px;
+  }
+
+  @media (max-width: 576px) {
+    margin-right: 0;
+    text-align: center;
   }
 }
 

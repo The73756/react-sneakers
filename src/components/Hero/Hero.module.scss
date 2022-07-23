@@ -2,19 +2,24 @@
   position: relative;
   margin: 0 auto;
   margin-bottom: 40px;
-  min-height: 300px;
   max-width: 960px;
+}
+
+.heroBanner {
+  img {
+    max-width: 100%;
+  }
 }
 
 .heroBannerBtn {
   position: absolute;
-  left: 60px;
-  bottom: 50px;
+  left: 5%;
+  bottom: 15%;
   border-radius: 110px;
   padding: 14px 56px;
   font-weight: 700;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 120%;
   text-align: center;
   text-transform: uppercase;
   color: #fff;
@@ -23,5 +28,20 @@
 
   &:hover {
     background-color: #8ebf4c;
+  }
+
+  @media (max-width: 968px) {
+    padding: 0;
+    width: 20%;
+    height: 18%;
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 10px;
   }
 }

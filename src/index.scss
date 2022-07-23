@@ -60,6 +60,10 @@ a {
   color: inherit;
 }
 
+.mr {
+  margin-right: var(--scroll-width);
+}
+
 .disable-scroll {
   overflow: hidden;
   margin-right: var(--scroll-width);
@@ -76,6 +80,10 @@ a {
 
 .content {
   padding: 40px;
+
+  @media (max-width: 576px) {
+    padding: 20px;
+  }
 }
 
 .subtitle {
@@ -86,6 +94,11 @@ a {
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
+
+  @media (max-width: 576px) {
+    margin-bottom: 5px;
+    font-size: 28px;
+  }
 }
 
 .sneakersHead {
@@ -93,6 +106,12 @@ a {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
 }
 
 .searchBlock {
@@ -120,12 +139,33 @@ a {
   img {
     padding: 0 18px;
   }
+
+  @media (max-width: 576px) {
+    width: 100%;
+    max-width: none;
+  }
 }
 
 .sneakers {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 40px;
+
+  @media (max-width: 1024px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 968px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 // Btns
@@ -254,6 +294,13 @@ a {
 
   &:hover {
     box-shadow: 0 0 30px rgb(0 0 0 / 30%) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
   }
 }
 

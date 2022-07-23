@@ -55,7 +55,7 @@ function Card({ title, price, imageUrl, id, onFavorite, onRemoveFavorite, onPlus
 							</svg>
 						</span>
 					</button>}
-					<img width='100%' height={135} src={imageUrl} alt={title} />
+					<img width={112} height={135} src={imageUrl} alt={title}  className={styles.cardImg} />
 					<h3 className={styles.cardTitle}>{title}</h3>
 					<div className={styles.cardMetaWrapper}>
 						<div className={styles.cardMeta}>

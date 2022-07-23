@@ -13,6 +13,22 @@
     box-shadow: 0 14px 30px rgb(0 0 0 / 5%);
     transform: translateY(-5px);
   }
+
+  @media (max-width: 768px) {
+    padding: 20px 30px;
+
+    &:hover {
+      box-shadow: none;
+      transform: none;
+    }
+  }
+}
+
+.cardImg {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-width: 100%;
 }
 
 .cardTitle {
