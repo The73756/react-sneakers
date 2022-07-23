@@ -23,12 +23,14 @@ function App() {
     const cssDuration = getComputedStyle(document.querySelector(':root')).getPropertyValue('--duration').slice(0, -1); //ms
     const dur = cssDuration * 1000; //second
 
-    if (cartOpened) {
-      document.body.classList.add('disable-scroll');
-    } else {
-      setTimeout(() => {
-        document.body.classList.remove('disable-scroll');
-      }, dur);
+    if (document.body.offsetHeight > window.innerHeight) { // наличие скролла
+      if (cartOpened) {
+        document.body.classList.add('disable-scroll');
+      } else {
+        setTimeout(() => {
+          document.body.classList.remove('disable-scroll');
+        }, dur);
+      }
     }
   };    
   disableScoll();

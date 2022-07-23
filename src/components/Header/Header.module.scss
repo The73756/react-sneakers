@@ -22,10 +22,10 @@
 
 .headerLogo {
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
 
   @media (max-width: 576px) {
+    flex-direction: row-reverse;
     justify-content: space-between;
     margin-bottom: 15px;
     width: 100%;
