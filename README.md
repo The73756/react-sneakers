@@ -9,6 +9,7 @@ Demo - [Gh pages](https://the73756.github.io/react-sneakers/)
 - **Fixed most bugs**
 - **Сompleted page states**
 - **Add simple adaptive on mobile**
+- **Add loading state on favorites and orders page**
 
 ## Stack:
 

@@ -22,16 +22,29 @@ function Orders() {
 	}, []);
 
 	return (
-		<main className={`${orders.length > 0 ? 'content' : 'content noItems'}`}>
+		<main className="content">
+			<div className='sneakersHead'>
+				<h2 className="subtitle">Мои заказы</h2>
+			</div>
 			{
-			orders.length > 0 
+				isLoading ? 
+				<>
+					<div className="sneakers">
+						{[...Array(4)].map((item, index) => (
+							<Card
+								key={index}
+								loading={isLoading}
+								{...item}
+							/>
+						))}
+					</div>
+				</>
+			: 
+				orders.length > 0 
 			?
 				<>
-					<div className='sneakersHead'>
-						<h2 className="subtitle">Мои заказы</h2>
-					</div>
 					<div className="sneakers">
-					{ (isLoading	? [...Array(8)] : orders).map((item, index) => (
+					{orders.map((item, index) => (
 							<Card
 								key={index}
 								loading={isLoading}
@@ -41,11 +54,13 @@ function Orders() {
 					</div>
 				</>
 			:
-				<NoItems 
-					title={'Заказов нет :('}
-					img={'img/no-orders.png'}
-					descr={'Вы ничего еще не заказывали ранее'}
-				/> 
+				<div className="noItems">
+					<NoItems 
+						title={'Заказов нет :('}
+						img={'img/no-orders.png'}
+						descr={'Вы ничего еще не заказывали ранее'}
+					/> 
+				</div>
 			}
 		</main>
 	);

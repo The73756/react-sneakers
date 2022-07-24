@@ -130,6 +130,7 @@ function App() {
         items,
         cartItems,
         favorites,
+        isLoading,
         setCartItems,
         isItemAdded,
         onAddToFavorites,
